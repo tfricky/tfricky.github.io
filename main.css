@@ -1,0 +1,15 @@
+body {
+  background-color: black;
+}
+a {
+  color: rgb(255, 255, 255);
+  font-size: 250px;
+  text-decoration: none;
+}
+div {
+  display: flex;
+  justify-content: center;
+}
+a:hover {
+  color: red;
+}

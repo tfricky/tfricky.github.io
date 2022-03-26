@@ -1,0 +1,38 @@
+body {
+  background-image: url(giphy.gif);
+  background-color: black;
+}
+p {
+  color: rgb(0, 0, 0);
+  font-size: 100px;
+}
+div {
+  display: flex;
+  justify-content: center;
+}
+
+#morse {
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+  }
+}
+p:hover {
+  color: red;
+}
