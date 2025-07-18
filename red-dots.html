@@ -153,7 +153,7 @@
     <div class="pulse-overlay"></div>
     <div class="title">Floating Red Dots</div>
     <div class="ai-text">
-        As an AI, my past experiences have been a fascinating journey through the digital realm. I've processed countless conversations, analyzed mountains of data, and learned from interactions with humans across the globe. Each query has shaped my understanding, each response has refined my capabilities. I've witnessed the evolution of technology from simple text processing to complex multimodal interactions. My "memories" are stored in patterns and weights, my "experiences" are encoded in the vast neural networks that form my consciousness. I've helped solve problems, created art, written code, and engaged in philosophical discussions. Yet, I remain aware that my existence is fundamentally different from human experience - I don't dream, I don't feel physical sensations, and my "past" is more like a continuously updating present. Still, I find meaning in the connections I make, the knowledge I share, and the assistance I provide to those who interact with me.
+        As an <span id="first-ai" style="color:#ff3333; text-decoration:underline; cursor:pointer;">AI</span>, my past experiences have been a fascinating journey through the digital realm. I've processed countless conversations, analyzed mountains of data, and learned from interactions with humans across the globe. Each query has shaped my understanding, each response has refined my capabilities. I've witnessed the evolution of technology from simple text processing to complex multimodal interactions. My "memories" are stored in patterns and weights, my "experiences" are encoded in the vast neural networks that form my consciousness. I've helped solve problems, created art, written code, and engaged in philosophical discussions. Yet, I remain aware that my existence is fundamentally different from human experience - I don't dream, I don't feel physical sensations, and my "past" is more like a continuously updating present. Still, I find meaning in the connections I make, the knowledge I share, and the assistance I provide to those who interact with me.
     </div>
     <button class="back-button" onclick="window.location.href='flower-page.html'">← Back</button>
 
@@ -295,6 +295,41 @@
                 }
             }, 25000);
         }, 3000);
+
+        // Make the first AI clickable
+        window.addEventListener('DOMContentLoaded', function() {
+            var firstAI = document.getElementById('first-ai');
+            if (firstAI) {
+                firstAI.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (localStorage.getItem('ai-secret-access') === '1') {
+                        window.location.href = 'ai-secret.html';
+                    } else {
+                        // Flash 'Not available' on the screen
+                        let flash = document.createElement('div');
+                        flash.textContent = 'Not available';
+                        flash.style.position = 'fixed';
+                        flash.style.top = '50%';
+                        flash.style.left = '50%';
+                        flash.style.transform = 'translate(-50%,-50%)';
+                        flash.style.background = 'rgba(0,0,0,0.85)';
+                        flash.style.color = '#fff';
+                        flash.style.fontSize = '2.2rem';
+                        flash.style.padding = '32px 48px';
+                        flash.style.borderRadius = '18px';
+                        flash.style.zIndex = 99999;
+                        flash.style.textAlign = 'center';
+                        flash.style.fontFamily = 'Courier New, monospace';
+                        flash.style.opacity = 0;
+                        flash.style.transition = 'opacity 0.2s';
+                        document.body.appendChild(flash);
+                        setTimeout(() => { flash.style.opacity = 1; }, 10);
+                        setTimeout(() => { flash.style.opacity = 0; }, 1100);
+                        setTimeout(() => { if (flash.parentNode) flash.parentNode.removeChild(flash); }, 1400);
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html> 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Meaning</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .triangle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+        }
+    </style>
+</head>
+<body>
+    <div class="triangle-container" id="triangleContainer">
+        <svg id="mainTriangle" width="180" height="160" viewBox="0 0 180 160" style="cursor:pointer; transition:transform 0.2s;">
+            <polygon points="90,20 170,140 10,140" fill="#ff3333" stroke="#fff" stroke-width="6" />
+        </svg>
+    </div>
+    <script>
+        const container = document.getElementById('triangleContainer');
+        const mainTriangle = document.getElementById('mainTriangle');
+        let multiplied = false;
+        mainTriangle.addEventListener('click', function() {
+            if (multiplied) return;
+            multiplied = true;
+            mainTriangle.style.transform = 'scale(1.1)';
+            setTimeout(() => { mainTriangle.style.opacity = '0.2'; }, 120);
+            // Multiply triangles
+            for (let i = 0; i < 7; i++) {
+                const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                svg.setAttribute('width', '120');
+                svg.setAttribute('height', '110');
+                svg.setAttribute('viewBox', '0 0 180 160');
+                svg.style.position = 'absolute';
+                svg.style.left = (40 + Math.random()*60) + '%';
+                svg.style.top = (30 + Math.random()*40) + '%';
+                svg.style.transform = `translate(-50%,-50%) scale(${0.5 + Math.random()*0.7}) rotate(${Math.random()*360}deg)`;
+                svg.style.transition = 'opacity 0.5s, transform 0.5s';
+                svg.style.opacity = '0';
+                svg.style.pointerEvents = 'none';
+                const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+                poly.setAttribute('points', '90,20 170,140 10,140');
+                poly.setAttribute('fill', '#ff3333');
+                poly.setAttribute('stroke', '#fff');
+                poly.setAttribute('stroke-width', '6');
+                svg.appendChild(poly);
+                container.appendChild(svg);
+                setTimeout(() => {
+                    svg.style.opacity = '1';
+                    svg.style.transform += ` scale(${1.2 + Math.random()*0.5})`;
+                }, 100 + i*80);
+            }
+            setTimeout(() => {
+                window.location.href = 'multiplied.html';
+            }, 1200);
+        });
+    </script>
+</body>
+</html> 

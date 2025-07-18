@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Text</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: #fff;
+            color: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        .text-display {
+            font-size: 2rem;
+            text-align: center;
+            max-width: 90vw;
+            word-break: break-word;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 32px 24px;
+            background: #fafafa;
+            box-shadow: 0 0 12px #0001;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-display">
+        <div id="textDisplay">Loading...</div>
+        <div id="judgment" style="margin-top:28px; font-size:1.2rem; color:#555; font-style:italic;"></div>
+    </div>
+    <script>
+        function getParam(name) {
+            const url = new URL(window.location.href);
+            return url.searchParams.get(name) || '';
+        }
+        const text = getParam('text');
+        document.getElementById('textDisplay').textContent = text || 'No text provided.';
+
+        // If the input is 'nomeaning', redirect to nomeaning.html
+        if (text && text.trim().toLowerCase() === 'nomeaning') {
+            window.location.href = 'nomeaning.html';
+        } else {
+            // Always show the same judgment
+            document.getElementById('judgment').textContent = "Really? That's what you put. Try again.";
+            // After a few seconds, redirect back to the prompt input page
+            setTimeout(function() {
+                window.location.href = 'ai-secret.html';
+            }, 3000);
+        }
+    </script>
+</body>
+</html> 

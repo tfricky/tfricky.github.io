@@ -212,6 +212,8 @@
             successMsg.style.opacity = 0;
             
             if (input === correctCode) {
+                // Grant access to AI secret
+                try { localStorage.setItem('ai-secret-access', '1'); } catch(e) {}
                 successMsg.style.opacity = 1;
                 setTimeout(() => {
                     window.location.href = 'index.html?return=true';

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand Finale</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: #181818;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', monospace;
+        }
+        .hands-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 8vh;
+        }
+        .fade-text {
+            margin-top: 48px;
+            font-size: 2.2rem;
+            color: #fff;
+            opacity: 0;
+            transition: opacity 1s;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="hands-container">
+        <svg width="220" height="260" viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+            <!-- Left hand -->
+            <path d="M80 200 Q70 170 90 120 Q100 100 110 120 Q120 140 110 180 Q105 200 80 200" fill="#f5e3c3" stroke="#bfa77a" stroke-width="5"/>
+            <!-- Right hand -->
+            <path d="M140 200 Q150 170 130 120 Q120 100 110 120 Q100 140 110 180 Q115 200 140 200" fill="#f5e3c3" stroke="#bfa77a" stroke-width="5"/>
+            <!-- Palm lines -->
+            <path d="M110 180 Q108 190 112 200" stroke="#bfa77a" stroke-width="2" fill="none"/>
+            <path d="M110 180 Q112 190 108 200" stroke="#bfa77a" stroke-width="2" fill="none"/>
+        </svg>
+    </div>
+    <div class="fade-text" id="notThisText">not this.</div>
+    <script>
+        setTimeout(function() {
+            document.getElementById('notThisText').style.opacity = 1;
+        }, 1800);
+        // Redirect after a few more seconds
+        setTimeout(function() {
+            window.location.href = 'index.html?morewillcome=1';
+        }, 4000);
+    </script>
+</body>
+</html> 
