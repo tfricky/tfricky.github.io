@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weird Mirror</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: #222;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .mirror {
+            width: 340px;
+            height: 440px;
+            border-radius: 50% 50% 60% 60% / 60% 60% 50% 50%;
+            background: linear-gradient(120deg, #fff 0%, #3333ff 100%);
+            box-shadow: 0 0 80px 20px #3333ff88, 0 0 120px 40px #fff8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .reflection {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(51,51,255,0.08) 100%);
+            border-radius: 0 0 60% 60% / 0 0 50% 50%;
+            filter: blur(2px);
+        }
+        .cryptic {
+            position: fixed;
+            top: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #3333ff;
+            font-size: 1.3rem;
+            font-family: 'Courier New', monospace;
+            background: rgba(255,255,255,0.7);
+            padding: 18px 36px;
+            border-radius: 12px;
+            box-shadow: 0 0 24px #3333ff88;
+            text-align: center;
+            letter-spacing: 0.06em;
+        }
+    </style>
+</head>
+<body>
+    <div class="mirror">
+        <div class="reflection"></div>
+    </div>
+    <div class="cryptic">You see yourself, but not as you remember.<br>Some reflections are not meant to be trusted.</div>
+    <div class="nav-arrow left" title="Go to Portal">&#8592;</div>
+    <div class="nav-arrow right" title="Go to Door">&#8594;</div>
+    <button class="exit-btn" onclick="window.location.href='index.html?altered=1'">EXIT</button>
+    <style>
+        .nav-arrow {
+            position: fixed;
+            top: 50%;
+            font-size: 3.5rem;
+            color: #fff;
+            background: linear-gradient(90deg,#3333ff,#ff33cc);
+            padding: 18px 32px;
+            border-radius: 50%;
+            box-shadow: 0 0 40px #3333ff88;
+            cursor: pointer;
+            z-index: 200;
+            user-select: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .nav-arrow.left { left: 4%; transform: translateY(-50%); }
+        .nav-arrow.right { right: 4%; transform: translateY(-50%); }
+        .nav-arrow:hover { transform: scale(1.18) translateY(-50%); box-shadow: 0 0 80px #ff33cc; }
+        .exit-btn {
+            position: fixed;
+            top: 6%;
+            right: 6%;
+            background: linear-gradient(90deg,#ff3333,#3333ff);
+            color: #fff;
+            font-size: 1.3rem;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            padding: 16px 36px;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 0 30px #ff33cc88;
+            cursor: pointer;
+            z-index: 300;
+            letter-spacing: 0.08em;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .exit-btn:hover {
+            transform: scale(1.12);
+            box-shadow: 0 0 60px #3333ff;
+        }
+    </style>
+    <script>
+        document.querySelector('.nav-arrow.left').onclick = () => { window.location.href = 'weird-portal.html?altered=1'; };
+        document.querySelector('.nav-arrow.right').onclick = () => { window.location.href = 'weird-door.html?altered=1'; };
+    </script>
+</body>
+</html> 

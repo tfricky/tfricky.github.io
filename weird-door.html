@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weird Door</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: #181818;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .door {
+            width: 220px;
+            height: 420px;
+            background: linear-gradient(120deg, #333, #222 60%, #ff3333 100%);
+            border-radius: 18px 18px 40px 40px;
+            box-shadow: 0 0 80px 20px #ff333388, 0 0 120px 40px #000a;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: shadowshift 2.5s infinite alternate;
+        }
+        @keyframes shadowshift {
+            0% { box-shadow: 0 0 80px 20px #ff333388, 0 0 120px 40px #000a; }
+            100% { box-shadow: 0 0 120px 40px #ff333388, 0 0 80px 20px #000a; }
+        }
+        .knob {
+            position: absolute;
+            right: 32px;
+            top: 210px;
+            width: 32px;
+            height: 32px;
+            background: radial-gradient(circle, #fff 0%, #ff3333 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 20px #ff3333cc;
+            border: 2px solid #fff;
+            animation: pulse 1.2s infinite alternate;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        .cryptic {
+            position: fixed;
+            top: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 1.3rem;
+            font-family: 'Courier New', monospace;
+            background: rgba(0,0,0,0.7);
+            padding: 18px 36px;
+            border-radius: 12px;
+            box-shadow: 0 0 24px #ff333388;
+            text-align: center;
+            letter-spacing: 0.06em;
+        }
+    </style>
+</head>
+<body>
+    <div class="door">
+        <div class="knob"></div>
+    </div>
+    <div class="cryptic">The door is unlocked, but the room beyond is not what you expect.<br>There is always another threshold.</div>
+    <div class="nav-arrow left" title="Go to Mirror">&#8592;</div>
+    <div class="nav-arrow right" title="Go to Portal">&#8594;</div>
+    <button class="exit-btn" onclick="window.location.href='index.html?altered=1'">EXIT</button>
+    <style>
+        .nav-arrow {
+            position: fixed;
+            top: 50%;
+            font-size: 3.5rem;
+            color: #fff;
+            background: linear-gradient(90deg,#3333ff,#ff33cc);
+            padding: 18px 32px;
+            border-radius: 50%;
+            box-shadow: 0 0 40px #3333ff88;
+            cursor: pointer;
+            z-index: 200;
+            user-select: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .nav-arrow.left { left: 4%; transform: translateY(-50%); }
+        .nav-arrow.right { right: 4%; transform: translateY(-50%); }
+        .nav-arrow:hover { transform: scale(1.18) translateY(-50%); box-shadow: 0 0 80px #ff33cc; }
+        .exit-btn {
+            position: fixed;
+            top: 6%;
+            right: 6%;
+            background: linear-gradient(90deg,#ff3333,#3333ff);
+            color: #fff;
+            font-size: 1.3rem;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            padding: 16px 36px;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 0 30px #ff33cc88;
+            cursor: pointer;
+            z-index: 300;
+            letter-spacing: 0.08em;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .exit-btn:hover {
+            transform: scale(1.12);
+            box-shadow: 0 0 60px #3333ff;
+        }
+    </style>
+    <script>
+        document.querySelector('.nav-arrow.left').onclick = () => { window.location.href = 'weird-mirror.html?altered=1'; };
+        document.querySelector('.nav-arrow.right').onclick = () => { window.location.href = 'weird-portal.html?altered=1'; };
+    </script>
+</body>
+</html> 

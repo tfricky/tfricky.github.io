@@ -1,19 +1,475 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=100, initial-scale=1.0" />
-    <title>Fricky</title>
-    <link rel="stylesheet" href="main.css" />
-  </head>
-  <body>
-    <div>
-      <a id="h" href="1">h</a><a>e</a>
-      <a>l</a>
-      <a>l</a>
-      <a>o</a>
-      <a>.</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer Hands with Colorful Shapes</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: #0a0a0a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .prayer-hands {
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+            z-index: 10;
+            animation: pulse 4s ease-in-out infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .prayer-hands:hover {
+            transform: scale(1.05);
+        }
+
+        .prayer-hands svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .shape {
+            position: absolute;
+            animation: drift 12s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) { animation-delay: 0s; }
+        .shape:nth-child(2) { animation-delay: 2s; }
+        .shape:nth-child(3) { animation-delay: 4s; }
+        .shape:nth-child(4) { animation-delay: 6s; }
+        .shape:nth-child(5) { animation-delay: 8s; }
+        .shape:nth-child(6) { animation-delay: 10s; }
+
+        @keyframes drift {
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+            25% { transform: translateY(-30px) rotate(90deg) scale(1.1); }
+            50% { transform: translateY(-10px) rotate(180deg) scale(0.9); }
+            75% { transform: translateY(-40px) rotate(270deg) scale(1.2); }
+        }
+
+        .square {
+            width: 40px;
+            height: 40px;
+            background: #8b0000;
+            top: 15%;
+            left: 15%;
+            animation: drift 12s ease-in-out infinite, rotate 15s linear infinite;
+            border: 1px solid #4a0000;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 43px solid #2f4f4f;
+            top: 15%;
+            right: 15%;
+            animation: drift 12s ease-in-out infinite, rotate 15s linear infinite reverse;
+        }
+
+        .hexagon {
+            width: 50px;
+            height: 28.87px;
+            background: #191970;
+            position: relative;
+            bottom: 15%;
+            left: 15%;
+            animation: drift 12s ease-in-out infinite, rotate 15s linear infinite;
+        }
+
+        .hexagon:before,
+        .hexagon:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+        }
+
+        .hexagon:before {
+            bottom: 100%;
+            border-bottom: 14.43px solid #191970;
+        }
+
+        .hexagon:after {
+            top: 100%;
+            width: 0;
+            border-top: 14.43px solid #191970;
+        }
+
+        .pentagon {
+            width: 50px;
+            height: 50px;
+            background: #2e2e2e;
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+            bottom: 15%;
+            right: 15%;
+            animation: drift 12s ease-in-out infinite, rotate 15s linear infinite reverse;
+            border: 1px solid #1a1a1a;
+        }
+
+        .star {
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 40px solid #4b0082;
+            position: relative;
+            top: 50%;
+            left: 8%;
+            transform: translateY(-50%);
+            animation: drift 12s ease-in-out infinite, rotate 15s linear infinite;
+        }
+
+        .star:before {
+            content: "";
+            position: absolute;
+            top: 12px;
+            left: -20px;
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 40px solid #4b0082;
+        }
+
+        .circle {
+            width: 50px;
+            height: 50px;
+            background: #800020;
+            border-radius: 50%;
+            top: 50%;
+            right: 8%;
+            transform: translateY(-50%);
+            animation: drift 12s ease-in-out infinite, rotate 15s linear infinite reverse;
+            border: 1px solid #4a0012;
+        }
+
+        .shape:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        .ambient-noise {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(47, 79, 79, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(25, 25, 112, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .welcome-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: #00ff00;
+            text-shadow: 0 0 30px rgba(0, 255, 0, 0.8);
+            z-index: 1000;
+            opacity: 0;
+            display: none;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .hidden-number {
+            position: absolute;
+            color: rgba(139, 0, 0, 0.1);
+            font-size: 0.8rem;
+            pointer-events: none;
+            z-index: 0;
+            user-select: none;
+        }
+
+        @keyframes welcomeFade {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+            20% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+            80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-noise"></div>
+    <div class="welcome-message" id="welcomeMessage">Welcome back!</div>
+    
+    <!-- Hidden numbers scattered throughout -->
+    <div class="hidden-number" style="top: 15%; left: 15%;">1</div>
+    <div class="hidden-number" style="top: 25%; right: 20%;">5</div>
+    <div class="hidden-number" style="bottom: 30%; left: 25%;">2</div>
+    <div class="hidden-number" style="bottom: 20%; right: 15%;">8</div>
+    <div class="hidden-number" style="top: 60%; left: 10%;">3</div>
+    
+    <div class="container">
+        <div class="prayer-hands" onclick="window.location.href='flower-page.html'">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- Dark, serious sketched prayer hands -->
+                <g stroke="#666" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Left hand - more angular and harsh -->
+                    <path d="M60 80 L65 75 L70 80 L75 85 L80 90 L85 95 L90 100 L95 105 L100 110" opacity="0.9"/>
+                    <path d="M65 85 L70 80 L75 85 L80 90 L85 95 L90 100 L95 105" opacity="0.7"/>
+                    <path d="M70 90 L75 85 L80 90 L85 95 L90 100" opacity="0.8"/>
+                    <path d="M75 95 L80 90 L85 95" opacity="0.6"/>
+                    
+                    <!-- Right hand - more angular and harsh -->
+                    <path d="M100 110 L105 105 L110 110 L115 115 L120 120 L125 125 L130 130 L135 135 L140 140" opacity="0.9"/>
+                    <path d="M105 115 L110 110 L115 115 L120 120 L125 125 L130 130 L135 135" opacity="0.7"/>
+                    <path d="M110 120 L115 115 L120 120 L125 125 L130 130" opacity="0.8"/>
+                    <path d="M115 125 L120 120 L125 125" opacity="0.6"/>
+                    
+                    <!-- Fingers - more rigid -->
+                    <path d="M55 75 L60 70 L65 75" opacity="0.9"/>
+                    <path d="M145 145 L150 140 L155 145" opacity="0.9"/>
+                    
+                    <!-- Thumbs - more angular -->
+                    <path d="M50 85 L55 80 L60 85" opacity="0.8"/>
+                    <path d="M140 155 L145 150 L150 155" opacity="0.8"/>
+                    
+                    <!-- Palm details - more geometric -->
+                    <rect x="70" y="90" width="10" height="15" opacity="0.2" fill="none"/>
+                    <rect x="120" y="130" width="10" height="15" opacity="0.2" fill="none"/>
+                    
+                    <!-- Wrist lines - more harsh -->
+                    <path d="M45 90 L50 85 L55 90" opacity="0.5"/>
+                    <path d="M145 160 L150 155 L155 160" opacity="0.5"/>
+                    
+                    <!-- Additional harsh details -->
+                    <path d="M58 78 L62 82" opacity="0.4"/>
+                    <path d="M142 142 L146 146" opacity="0.4"/>
+                    <path d="M72 88 L76 92" opacity="0.3"/>
+                    <path d="M122 128 L126 132" opacity="0.3"/>
+                </g>
+            </svg>
+        </div>
+        <div class="shape square"></div>
+        <div class="shape triangle"></div>
+        <div class="shape hexagon"></div>
+        <div class="shape pentagon"></div>
+        <div class="shape star"></div>
+        <div class="shape circle"></div>
     </div>
-  </body>
+
+    <script>
+        // Check if returning from code page
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('return') === 'true') {
+                const welcomeMessage = document.getElementById('welcomeMessage');
+                welcomeMessage.style.display = 'block';
+                welcomeMessage.style.animation = 'welcomeFade 4s ease-in-out forwards';
+            }
+        });
+
+        // Altered mode: if ?altered=1, dramatically change the page
+        function isAltered() {
+            return window.location.search.includes('altered=1');
+        }
+        if (isAltered()) {
+            // Change background
+            document.body.style.background = 'linear-gradient(120deg, #ff3333 0%, #3333ff 100%)';
+            // Add chaos overlay
+            const chaos = document.createElement('div');
+            chaos.style.position = 'fixed';
+            chaos.style.top = 0;
+            chaos.style.left = 0;
+            chaos.style.width = '100vw';
+            chaos.style.height = '100vh';
+            chaos.style.pointerEvents = 'none';
+            chaos.style.zIndex = 10000;
+            chaos.style.background = 'repeating-linear-gradient(45deg, rgba(255,255,255,0.07) 0 20px, transparent 20px 40px)';
+            document.body.appendChild(chaos);
+            // Add altered text
+            const alteredText = document.createElement('div');
+            alteredText.textContent = 'THE CYCLE IS BROKEN';
+            alteredText.style.position = 'fixed';
+            alteredText.style.top = '10%';
+            alteredText.style.left = '50%';
+            alteredText.style.transform = 'translateX(-50%)';
+            alteredText.style.fontSize = '3.5rem';
+            alteredText.style.color = '#fff';
+            alteredText.style.textShadow = '0 0 40px #ff3333, 0 0 80px #3333ff';
+            alteredText.style.zIndex = 10001;
+            alteredText.style.fontWeight = 'bold';
+            alteredText.style.letterSpacing = '0.1em';
+            document.body.appendChild(alteredText);
+            // Animate shapes
+            document.querySelectorAll('.shape').forEach(shape => {
+                shape.style.filter = 'hue-rotate(180deg) brightness(1.5)';
+                shape.style.animationDuration = '2s';
+                shape.style.opacity = '0.7';
+            });
+            // Animate prayer hands
+            const hands = document.querySelector('.prayer-hands');
+            if (hands) {
+                hands.style.filter = 'invert(1) hue-rotate(90deg) drop-shadow(0 0 40px #fff)';
+                hands.style.animation = 'pulse 0.7s alternate infinite';
+            }
+            // Add random floating symbols
+            for (let i = 0; i < 12; i++) {
+                const sym = document.createElement('div');
+                sym.textContent = ['◆','◼','▲','●','✦','✧'][Math.floor(Math.random()*6)];
+                sym.style.position = 'fixed';
+                sym.style.left = Math.random()*100 + 'vw';
+                sym.style.top = Math.random()*100 + 'vh';
+                sym.style.fontSize = (2+Math.random()*3)+'rem';
+                sym.style.color = ['#ff3333','#3333ff','#fff','#ffcc00'][Math.floor(Math.random()*4)];
+                sym.style.opacity = 0.7;
+                sym.style.zIndex = 10002;
+                sym.style.pointerEvents = 'none';
+                sym.style.animation = `float${i} 3s linear infinite alternate`;
+                document.body.appendChild(sym);
+                const keyframes = document.createElement('style');
+                keyframes.innerHTML = `@keyframes float${i} { 0% { transform: translateY(0); } 100% { transform: translateY(-${30+Math.random()*60}px); } }`;
+                document.head.appendChild(keyframes);
+            }
+            // Add buttons to access the three weird pages
+            const btns = document.createElement('div');
+            btns.style.position = 'fixed';
+            btns.style.bottom = '5%';
+            btns.style.left = '50%';
+            btns.style.transform = 'translateX(-50%)';
+            btns.style.display = 'flex';
+            btns.style.gap = '32px';
+            btns.style.zIndex = 10010;
+            [
+                { text: 'PORTAL', url: 'weird-portal.html?altered=1', color: '#ff33cc' },
+                { text: 'DOOR', url: 'weird-door.html?altered=1', color: '#ff3333' },
+                { text: 'MIRROR', url: 'weird-mirror.html?altered=1', color: '#3333ff' }
+            ].forEach(({text, url, color}) => {
+                const b = document.createElement('button');
+                b.textContent = text;
+                b.onclick = () => { window.location.href = url; };
+                b.style.background = color;
+                b.style.color = '#fff';
+                b.style.fontWeight = 'bold';
+                b.style.fontFamily = 'Courier New, monospace';
+                b.style.fontSize = '1.2rem';
+                b.style.padding = '16px 36px';
+                b.style.border = 'none';
+                b.style.borderRadius = '12px';
+                b.style.boxShadow = '0 0 20px ' + color + '88';
+                b.style.cursor = 'pointer';
+                b.style.letterSpacing = '0.08em';
+                b.style.transition = 'transform 0.2s, box-shadow 0.2s';
+                b.onmouseenter = () => { b.style.transform = 'scale(1.08)'; b.style.boxShadow = '0 0 40px ' + color; };
+                b.onmouseleave = () => { b.style.transform = 'scale(1)'; b.style.boxShadow = '0 0 20px ' + color + '88'; };
+                btns.appendChild(b);
+            });
+            document.body.appendChild(btns);
+
+            // Add "I've seen enough" button
+            const seenEnoughBtn = document.createElement('button');
+            seenEnoughBtn.textContent = "I'VE SEEN ENOUGH";
+            seenEnoughBtn.style.position = 'fixed';
+            seenEnoughBtn.style.top = '5%';
+            seenEnoughBtn.style.right = '5%';
+            seenEnoughBtn.style.background = 'linear-gradient(45deg, #ff0066, #6600ff)';
+            seenEnoughBtn.style.color = '#fff';
+            seenEnoughBtn.style.fontWeight = 'bold';
+            seenEnoughBtn.style.fontFamily = 'Courier New, monospace';
+            seenEnoughBtn.style.fontSize = '1rem';
+            seenEnoughBtn.style.padding = '12px 24px';
+            seenEnoughBtn.style.border = 'none';
+            seenEnoughBtn.style.borderRadius = '8px';
+            seenEnoughBtn.style.boxShadow = '0 0 30px rgba(255, 0, 102, 0.6)';
+            seenEnoughBtn.style.cursor = 'pointer';
+            seenEnoughBtn.style.zIndex = 10015;
+            seenEnoughBtn.style.letterSpacing = '0.05em';
+            seenEnoughBtn.style.transition = 'transform 0.2s, box-shadow 0.2s';
+            seenEnoughBtn.onmouseenter = () => { 
+                seenEnoughBtn.style.transform = 'scale(1.05)'; 
+                seenEnoughBtn.style.boxShadow = '0 0 50px rgba(255, 0, 102, 0.8)'; 
+            };
+            seenEnoughBtn.onmouseleave = () => { 
+                seenEnoughBtn.style.transform = 'scale(1)'; 
+                seenEnoughBtn.style.boxShadow = '0 0 30px rgba(255, 0, 102, 0.6)'; 
+            };
+            seenEnoughBtn.onclick = function() {
+                // Mark as seen enough
+                try { localStorage.setItem('seen-enough', '1'); } catch(e) {}
+                // Show the arrow
+                showCongratulationsArrow();
+                // Hide this button
+                this.style.display = 'none';
+            };
+            document.body.appendChild(seenEnoughBtn);
+
+            // Function to show congratulations arrow
+            function showCongratulationsArrow() {
+                const arrow = document.createElement('div');
+                arrow.innerHTML = '&#8594;';
+                arrow.style.position = 'fixed';
+                arrow.style.right = '4%';
+                arrow.style.bottom = '8%';
+                arrow.style.fontSize = '7rem';
+                arrow.style.color = '#fff';
+                arrow.style.background = 'linear-gradient(90deg,#3333ff,#ff33cc)';
+                arrow.style.padding = '28px 48px';
+                arrow.style.borderRadius = '50%';
+                arrow.style.boxShadow = '0 0 80px #ff33cc, 0 0 120px #3333ff';
+                arrow.style.cursor = 'pointer';
+                arrow.style.zIndex = 10020;
+                arrow.style.transition = 'transform 0.2s, box-shadow 0.2s';
+                arrow.style.animation = 'pulseArrow 1.2s infinite alternate';
+                arrow.onmouseenter = () => { arrow.style.transform = 'scale(1.22)'; arrow.style.boxShadow = '0 0 160px #ff33cc, 0 0 200px #3333ff'; };
+                arrow.onmouseleave = () => { arrow.style.transform = 'scale(1)'; arrow.style.boxShadow = '0 0 80px #ff33cc, 0 0 120px #3333ff'; };
+                arrow.onclick = () => { window.location.href = 'congratulations.html?altered=1'; };
+                document.body.appendChild(arrow);
+                const style = document.createElement('style');
+                style.innerHTML = `@keyframes pulseArrow { 0% { box-shadow: 0 0 80px #ff33cc, 0 0 120px #3333ff; } 100% { box-shadow: 0 0 160px #ff33cc, 0 0 200px #3333ff; } }`;
+                document.head.appendChild(style);
+            }
+
+            // Track visits to weird pages in localStorage
+            function markWeirdVisited(key) {
+                try { localStorage.setItem(key, '1'); } catch(e) {}
+            }
+            function allWeirdVisited() {
+                try {
+                    return localStorage.getItem('weird-portal') && localStorage.getItem('weird-door') && localStorage.getItem('weird-mirror');
+                } catch(e) { return false; }
+            }
+            // If coming from a weird page, mark as visited
+            if (document.referrer.includes('weird-portal.html')) markWeirdVisited('weird-portal');
+            if (document.referrer.includes('weird-door.html')) markWeirdVisited('weird-door');
+            if (document.referrer.includes('weird-mirror.html')) markWeirdVisited('weird-mirror');
+            
+            // Show arrow if user has clicked "I've seen enough"
+            if (localStorage.getItem('seen-enough')) {
+                showCongratulationsArrow();
+                seenEnoughBtn.style.display = 'none';
+            }
+        }
+    </script>
+</body>
 </html>

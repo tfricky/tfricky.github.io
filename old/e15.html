@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transportation Revolution - Page 15</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #FF4500 0%, #FF6347 50%, #FF7F50 100%);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        .road-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        .road-line {
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background: repeating-linear-gradient(
+                90deg,
+                #fff 0px,
+                #fff 50px,
+                transparent 50px,
+                transparent 100px
+            );
+            animation: road-move 3s linear infinite;
+        }
+        @keyframes road-move {
+            from { transform: translateX(-100px); }
+            to { transform: translateX(100px); }
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #FF6347;
+            box-shadow: 0 0 30px rgba(255, 99, 71, 0.3);
+        }
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px #FF6347;
+            background: linear-gradient(45deg, #FF6347, #FF7F50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .section {
+            background: rgba(255, 99, 71, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #FF6347;
+            transition: all 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 99, 71, 0.3);
+        }
+        .navigation {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .nav-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #FF6347, #FF7F50);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 99, 71, 0.5);
+        }
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(255, 99, 71, 0.8);
+        }
+        .home-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: rgba(0,0,0,0.8);
+            color: #FF6347;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid #FF6347;
+        }
+        .highlight {
+            color: #FFD700;
+            font-weight: bold;
+        }
+        .transport-stats {
+            background: #000;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #FF6347;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="road-bg" id="road-bg"></div>
+    <a href="../index.html" class="home-link">← Home</a>
+    
+    <div class="container">
+        <h1>🚗 Transportation Revolution 🚗</h1>
+        
+        <div class="content">
+            <div class="section">
+                <h2>🚙 Autonomous Vehicles</h2>
+                <p>Welcome to the future of <span class="highlight">self-driving transportation</span> - where vehicles navigate safely without human intervention.</p>
+                
+                <div class="transport-stats">
+// Autonomous Vehicle Data
+Tesla Autopilot: Level 2 autonomy
+Waymo: Level 4 autonomy
+Safety improvement: 90% reduction in accidents
+Market value: $2 trillion by 2030
+                </div>
+                
+                <p>Autonomous vehicle levels include:</p>
+                <ul>
+                    <li><span class="highlight">Level 1:</span> Driver assistance (adaptive cruise control)</li>
+                    <li><span class="highlight">Level 2:</span> Partial automation (Tesla Autopilot)</li>
+                    <li><span class="highlight">Level 3:</span> Conditional automation (Audi A8)</li>
+                    <li><span class="highlight">Level 4:</span> High automation (Waymo)</li>
+                    <li><span class="highlight">Level 5:</span> Full automation (no steering wheel)</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>🚁 Flying Cars & VTOL</h2>
+                <p>Vertical Take-Off and Landing (VTOL) vehicles are <span class="highlight">revolutionizing urban mobility</span> by taking transportation to the skies.</p>
+                
+                <p>VTOL applications include:</p>
+                <ul>
+                    <li><span class="highlight">Urban air mobility:</span> Flying taxis in cities</li>
+                    <li><span class="highlight">Emergency response:</span> Rapid medical transport</li>
+                    <li><span class="highlight">Cargo delivery:</span> Drone-based logistics</li>
+                    <li><span class="highlight">Personal transport:</span> Individual flying vehicles</li>
+                </ul>
+                
+                <p>These vehicles could eliminate traffic congestion and reduce travel times by 90%.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🚄 Hyperloop & High-Speed Rail</h2>
+            <p>Ultra-fast transportation systems are <span class="highlight">connecting cities</span> at speeds previously unimaginable.</p>
+            
+            <p>High-speed transportation includes:</p>
+            <ul>
+                <li><span class="highlight">Hyperloop:</span> 700+ mph in vacuum tubes</li>
+                <li><span class="highlight">Maglev trains:</span> Magnetic levitation at 300+ mph</li>
+                <li><span class="highlight">Vacuum trains:</span> Reduced air resistance</li>
+                <li><span class="highlight">Space travel:</span> Suborbital point-to-point</li>
+            </ul>
+            
+            <p>These systems could make cross-continental travel faster than domestic flights.</p>
+        </div>
+        
+        <div class="section">
+            <h2>🚢 Maritime Innovation</h2>
+            <p>The shipping industry is <span class="highlight">going green and autonomous</span> with revolutionary new technologies.</p>
+            
+            <p>Maritime innovations include:</p>
+            <ul>
+                <li><span class="highlight">Autonomous ships:</span> Self-navigating cargo vessels</li>
+                <li><span class="highlight">Electric propulsion:</span> Zero-emission shipping</li>
+                <li><span class="highlight">Hydrogen fuel cells:</span> Clean maritime power</li>
+                <li><span class="highlight">Underwater drones:</span> Submarine cargo transport</li>
+            </ul>
+            
+            <p>These technologies could eliminate 3% of global CO2 emissions from shipping.</p>
+        </div>
+        
+        <div class="section">
+            <h2>🚁 Drone Technology</h2>
+            <p>Unmanned aerial vehicles are <span class="highlight">transforming delivery</span> and transportation across all sectors.</p>
+            
+            <p>Drone applications include:</p>
+            <ul>
+                <li><span class="highlight">Package delivery:</span> Amazon Prime Air</li>
+                <li><span class="highlight">Medical transport:</span> Organ and medicine delivery</li>
+                <li><span class="highlight">Passenger transport:</span> Flying taxis</li>
+                <li><span class="highlight">Cargo transport:</span> Heavy lift drones</li>
+            </ul>
+            
+            <p>Drones could reduce delivery costs by 80% and delivery times by 90%.</p>
+        </div>
+        
+        <div class="navigation">
+            <a href="e16.html" class="nav-button">Move Forward →</a>
+        </div>
+    </div>
+
+    <script>
+        // Create road background
+        const roadBg = document.getElementById('road-bg');
+        for (let i = 0; i < 10; i++) {
+            const line = document.createElement('div');
+            line.className = 'road-line';
+            line.style.top = (i * 10) + '%';
+            line.style.animationDelay = (i * 0.3) + 's';
+            roadBg.appendChild(line);
+        }
+    </script>
+</body>
+</html> 

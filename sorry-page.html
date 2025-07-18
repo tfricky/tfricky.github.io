@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm So Sorry</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: #0a0a0a;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #ccc;
+            overflow: hidden;
+        }
+
+        .sorry-message {
+            font-size: 3rem;
+            color: #8b0000;
+            text-shadow: 0 0 20px rgba(139, 0, 0, 0.8);
+            margin-bottom: 50px;
+            text-align: center;
+            animation: sorryPulse 3s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        @keyframes sorryPulse {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .prayer-hands {
+            width: 300px;
+            height: 300px;
+            animation: floatHands 8s ease-in-out infinite;
+            z-index: 5;
+        }
+
+        .prayer-hands svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.4));
+        }
+
+        @keyframes floatHands {
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+            25% { transform: translateY(-20px) rotate(2deg) scale(1.02); }
+            50% { transform: translateY(-10px) rotate(-1deg) scale(0.98); }
+            75% { transform: translateY(-30px) rotate(1deg) scale(1.05); }
+        }
+
+        .ambient-noise {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(139, 0, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(47, 79, 79, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(25, 25, 112, 0.12) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(139, 0, 0, 0.3);
+            color: #ccc;
+            border: 1px solid #8b0000;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            z-index: 100;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .back-button:hover {
+            background: rgba(139, 0, 0, 0.5);
+            transform: scale(1.05);
+        }
+
+        .floating-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(139, 0, 0, 0.3);
+            border-radius: 50%;
+            animation: float-particle 25s linear infinite;
+        }
+
+        @keyframes float-particle {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
+        }
+
+        .countdown-timer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #8b0000;
+            padding: 15px;
+            color: #8b0000;
+            font-size: 1.2rem;
+            font-family: 'Courier New', monospace;
+            z-index: 1000;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.5);
+            animation: timerPulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes timerPulse {
+            0% { box-shadow: 0 0 15px rgba(139, 0, 0, 0.5); }
+            100% { box-shadow: 0 0 25px rgba(139, 0, 0, 0.8); }
+        }
+
+        .timer-label {
+            font-size: 0.8rem;
+            color: #ccc;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-noise"></div>
+    <div class="floating-particles" id="particles"></div>
+    
+    <div class="countdown-timer">
+        <div class="timer-label">TIME REMAINING</div>
+        <div id="timer">05:00:00</div>
+    </div>
+    
+    <button class="back-button" onclick="window.location.href='code-page.html'">← Back</button>
+
+    <div class="sorry-message">I'm so sorry</div>
+    
+    <div class="prayer-hands">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- Dark, serious sketched prayer hands -->
+            <g stroke="#666" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Left hand - more angular and harsh -->
+                <path d="M60 80 L65 75 L70 80 L75 85 L80 90 L85 95 L90 100 L95 105 L100 110" opacity="0.9"/>
+                <path d="M65 85 L70 80 L75 85 L80 90 L85 95 L90 100 L95 105" opacity="0.7"/>
+                <path d="M70 90 L75 85 L80 90 L85 95 L90 100" opacity="0.8"/>
+                <path d="M75 95 L80 90 L85 95" opacity="0.6"/>
+                
+                <!-- Right hand - more angular and harsh -->
+                <path d="M100 110 L105 105 L110 110 L115 115 L120 120 L125 125 L130 130 L135 135 L140 140" opacity="0.9"/>
+                <path d="M105 115 L110 110 L115 115 L120 120 L125 125 L130 130 L135 135" opacity="0.7"/>
+                <path d="M110 120 L115 115 L120 120 L125 125 L130 130" opacity="0.8"/>
+                <path d="M115 125 L120 120 L125 125" opacity="0.6"/>
+                
+                <!-- Fingers - more rigid -->
+                <path d="M55 75 L60 70 L65 75" opacity="0.9"/>
+                <path d="M145 145 L150 140 L155 145" opacity="0.9"/>
+                
+                <!-- Thumbs - more angular -->
+                <path d="M50 85 L55 80 L60 85" opacity="0.8"/>
+                <path d="M140 155 L145 150 L150 155" opacity="0.8"/>
+                
+                <!-- Palm details - more geometric -->
+                <rect x="70" y="90" width="10" height="15" opacity="0.2" fill="none"/>
+                <rect x="120" y="130" width="10" height="15" opacity="0.2" fill="none"/>
+                
+                <!-- Wrist lines - more harsh -->
+                <path d="M45 90 L50 85 L55 90" opacity="0.5"/>
+                <path d="M145 160 L150 155 L155 160" opacity="0.5"/>
+                
+                <!-- Additional harsh details -->
+                <path d="M58 78 L62 82" opacity="0.4"/>
+                <path d="M142 142 L146 146" opacity="0.4"/>
+                <path d="M72 88 L76 92" opacity="0.3"/>
+                <path d="M122 128 L126 132" opacity="0.3"/>
+            </g>
+        </svg>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 25 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 20) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles
+        createParticles();
+
+        // 5-hour countdown timer
+        let timeLeft = 5 * 60 * 60; // 5 hours in seconds
+        const timerElement = document.getElementById('timer');
+
+        function updateCountdown() {
+            const hours = Math.floor(timeLeft / 3600);
+            const minutes = Math.floor((timeLeft % 3600) / 60);
+            const seconds = timeLeft % 60;
+            
+            timerElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeLeft <= 0) {
+                // Redirect to the beginning of the website
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            timeLeft--;
+            setTimeout(updateCountdown, 1000);
+        }
+
+        // Start countdown when page loads
+        window.addEventListener('load', () => {
+            updateCountdown();
+        });
+    </script>
+</body>
+</html> 

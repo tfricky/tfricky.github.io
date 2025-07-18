@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finale</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: #fff;
+            font-family: 'Courier New', monospace;
+        }
+        .img-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+        img {
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+        .prayer-hands-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+            margin: 0 auto 80px auto;
+            padding-bottom: 80px;
+        }
+        .prayer-hands-svg {
+            width: 120px;
+            height: 120px;
+            margin-top: 40px;
+            opacity: 0.85;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .morphable.triangle-clickable .prayer-hands-svg {
+            cursor: pointer;
+            box-shadow: 0 0 0 0 #0000;
+        }
+        .morphable.triangle-clickable .prayer-hands-svg:hover {
+            box-shadow: 0 0 32px 8px #3366ff88, 0 0 16px 4px #ffcc3388;
+            transform: scale(1.08) rotate(-6deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="img-container">
+        <img src="file-not-found.png" alt="File not found">
+    </div>
+    <div class="prayer-hands-list" id="prayerHandsList">
+        <!-- Prayer hands will be replaced by shapes over time -->
+        <div class="morphable" data-shape="square">
+            <svg class="prayer-hands-svg" viewBox="0 0 200 200" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <g>
+                    <path d="M60 80 L65 75 L70 80 L75 85 L80 90 L85 95 L90 100 L95 105 L100 110"/>
+                    <path d="M65 85 L70 80 L75 85 L80 90 L85 95 L90 100 L95 105"/>
+                    <path d="M70 90 L75 85 L80 90 L85 95 L90 100"/>
+                    <path d="M75 95 L80 90 L85 95"/>
+                    <path d="M100 110 L105 105 L110 110 L115 115 L120 120 L125 125 L130 130 L135 135 L140 140"/>
+                    <path d="M105 115 L110 110 L115 115 L120 120 L125 125 L130 130 L135 135"/>
+                    <path d="M110 120 L115 115 L120 120 L125 125 L130 130"/>
+                    <path d="M115 125 L120 120 L125 125"/>
+                    <path d="M55 75 L60 70 L65 75"/>
+                    <path d="M145 145 L150 140 L155 145"/>
+                    <path d="M50 85 L55 80 L60 85"/>
+                    <path d="M140 155 L145 150 L150 155"/>
+                    <rect x="70" y="90" width="10" height="15" opacity="0.2"/>
+                    <rect x="120" y="130" width="10" height="15" opacity="0.2"/>
+                    <path d="M45 90 L50 85 L55 90" opacity="0.5"/>
+                    <path d="M145 160 L150 155 L155 160" opacity="0.5"/>
+                    <path d="M58 78 L62 82" opacity="0.4"/>
+                    <path d="M142 142 L146 146" opacity="0.4"/>
+                    <path d="M72 88 L76 92" opacity="0.3"/>
+                    <path d="M122 128 L126 132" opacity="0.3"/>
+                </g>
+            </svg>
+        </div>
+        <div class="morphable" data-shape="triangle">
+            <svg class="prayer-hands-svg" viewBox="0 0 200 200" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <g>
+                    <path d="M60 80 L65 75 L70 80 L75 85 L80 90 L85 95 L90 100 L95 105 L100 110"/>
+                    <path d="M65 85 L70 80 L75 85 L80 90 L85 95 L90 100 L95 105"/>
+                    <path d="M70 90 L75 85 L80 90 L85 95 L90 100"/>
+                    <path d="M75 95 L80 90 L85 95"/>
+                    <path d="M100 110 L105 105 L110 110 L115 115 L120 120 L125 125 L130 130 L135 135 L140 140"/>
+                    <path d="M105 115 L110 110 L115 115 L120 120 L125 125 L130 130 L135 135"/>
+                    <path d="M110 120 L115 115 L120 120 L125 125 L130 130"/>
+                    <path d="M115 125 L120 120 L125 125"/>
+                    <path d="M55 75 L60 70 L65 75"/>
+                    <path d="M145 145 L150 140 L155 145"/>
+                    <path d="M50 85 L55 80 L60 85"/>
+                    <path d="M140 155 L145 150 L150 155"/>
+                    <rect x="70" y="90" width="10" height="15" opacity="0.2"/>
+                    <rect x="120" y="130" width="10" height="15" opacity="0.2"/>
+                    <path d="M45 90 L50 85 L55 90" opacity="0.5"/>
+                    <path d="M145 160 L150 155 L155 160" opacity="0.5"/>
+                    <path d="M58 78 L62 82" opacity="0.4"/>
+                    <path d="M142 142 L146 146" opacity="0.4"/>
+                    <path d="M72 88 L76 92" opacity="0.3"/>
+                    <path d="M122 128 L126 132" opacity="0.3"/>
+                </g>
+            </svg>
+        </div>
+        <div class="morphable" data-shape="circle">
+            <svg class="prayer-hands-svg" viewBox="0 0 200 200" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <g>
+                    <path d="M60 80 L65 75 L70 80 L75 85 L80 90 L85 95 L90 100 L95 105 L100 110"/>
+                    <path d="M65 85 L70 80 L75 85 L80 90 L85 95 L90 100 L95 105"/>
+                    <path d="M70 90 L75 85 L80 90 L85 95 L90 100"/>
+                    <path d="M75 95 L80 90 L85 95"/>
+                    <path d="M100 110 L105 105 L110 110 L115 115 L120 120 L125 125 L130 130 L135 135 L140 140"/>
+                    <path d="M105 115 L110 110 L115 115 L120 120 L125 125 L130 130 L135 135"/>
+                    <path d="M110 120 L115 115 L120 120 L125 125 L130 130"/>
+                    <path d="M115 125 L120 120 L125 125"/>
+                    <path d="M55 75 L60 70 L65 75"/>
+                    <path d="M145 145 L150 140 L155 145"/>
+                    <path d="M50 85 L55 80 L60 85"/>
+                    <path d="M140 155 L145 150 L150 155"/>
+                    <rect x="70" y="90" width="10" height="15" opacity="0.2"/>
+                    <rect x="120" y="130" width="10" height="15" opacity="0.2"/>
+                    <path d="M45 90 L50 85 L55 90" opacity="0.5"/>
+                    <path d="M145 160 L150 155 L155 160" opacity="0.5"/>
+                    <path d="M58 78 L62 82" opacity="0.4"/>
+                    <path d="M142 142 L146 146" opacity="0.4"/>
+                    <path d="M72 88 L76 92" opacity="0.3"/>
+                    <path d="M122 128 L126 132" opacity="0.3"/>
+                </g>
+            </svg>
+        </div>
+    </div>
+    <script>
+        // Morph prayer hands into shapes one by one over time
+        function morphToShape(el, shape) {
+            el.innerHTML = '';
+            if (shape === 'square') {
+                el.innerHTML = `<svg class="prayer-hands-svg" viewBox="0 0 200 200"><rect x="40" y="40" width="120" height="120" rx="18" fill="url(#sqg)"/></svg><svg width="0" height="0"><defs><linearGradient id="sqg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff3333"/><stop offset="100%" stop-color="#33ffcc"/></linearGradient></defs></svg>`;
+            } else if (shape === 'triangle') {
+                el.innerHTML = `<svg class="prayer-hands-svg" viewBox="0 0 200 200"><polygon points="100,40 180,170 20,170" fill="url(#trig)"/></svg><svg width="0" height="0"><defs><linearGradient id="trig" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffcc33"/><stop offset="100%" stop-color="#3366ff"/></linearGradient></defs></svg>`;
+                el.classList.add('triangle-clickable');
+                el.onclick = () => { window.location.href = 'index.html?altered=1'; };
+            } else if (shape === 'circle') {
+                el.innerHTML = `<svg class="prayer-hands-svg" viewBox="0 0 200 200"><circle cx="100" cy="100" r="70" fill="url(#circg)"/></svg><svg width="0" height="0"><defs><radialGradient id="circg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ff66cc"/><stop offset="100%" stop-color="#33ff66"/></radialGradient></defs></svg>`;
+            }
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+            const morphs = document.querySelectorAll('.morphable');
+            morphs.forEach((el, i) => {
+                setTimeout(() => {
+                    morphToShape(el, el.getAttribute('data-shape'));
+                }, (i + 1) * 6000);
+            });
+        });
+        // Altered mode: if ?altered=1, dramatically change the page
+        function isAltered() {
+            return window.location.search.includes('altered=1');
+        }
+        if (isAltered()) {
+            // Flicker background
+            setInterval(() => {
+                document.body.style.background = `linear-gradient(120deg, #${Math.floor(Math.random()*16777215).toString(16)} 0%, #${Math.floor(Math.random()*16777215).toString(16)} 100%)`;
+            }, 400);
+            // Pulse and float shapes
+            document.querySelectorAll('.prayer-hands-svg').forEach((svg, i) => {
+                svg.style.transition = 'transform 0.4s, box-shadow 0.4s';
+                svg.style.boxShadow = '0 0 40px 10px #ff33cc88';
+                svg.animate([
+                    { transform: 'scale(1) translateY(0px)' },
+                    { transform: 'scale(1.13) translateY(-30px)' },
+                    { transform: 'scale(1) translateY(0px)' }
+                ], {
+                    duration: 1800 + i*200,
+                    iterations: Infinity
+                });
+            });
+            // Add a weird link to a new page
+            const weird = document.createElement('div');
+            weird.textContent = 'SEE THE END';
+            weird.style.position = 'fixed';
+            weird.style.bottom = '8%';
+            weird.style.left = '8%';
+            weird.style.fontSize = '2.1rem';
+            weird.style.color = '#fff';
+            weird.style.background = 'linear-gradient(90deg,#ff33cc,#3333ff)';
+            weird.style.padding = '18px 40px';
+            weird.style.borderRadius = '18px';
+            weird.style.boxShadow = '0 0 40px #ff33cc88';
+            weird.style.cursor = 'pointer';
+            weird.style.zIndex = 200;
+            weird.style.fontWeight = 'bold';
+            weird.style.letterSpacing = '0.1em';
+            weird.style.transition = 'transform 0.2s';
+            weird.onmouseenter = () => { weird.style.transform = 'scale(1.08)'; };
+            weird.onmouseleave = () => { weird.style.transform = 'scale(1)'; };
+            weird.onclick = () => { window.location.href = 'weird-end.html?altered=1'; };
+            document.body.appendChild(weird);
+        }
+    </script>
+</body>
+</html> 

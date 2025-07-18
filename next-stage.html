@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Stage</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: #181818;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+            overflow: hidden;
+        }
+        .hands-container {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 60px;
+            z-index: 2;
+        }
+        .sketch-hand {
+            width: 90px;
+            height: 120px;
+            display: block;
+            animation: wave 1.2s infinite alternate ease-in-out;
+        }
+        .sketch-hand.right {
+            transform: scaleX(-1);
+            animation-delay: 0.6s;
+        }
+        @keyframes wave {
+            0% { transform: rotate(-10deg); }
+            100% { transform: rotate(18deg); }
+        }
+        .flashing-fact {
+            position: fixed;
+            left: 50%;
+            top: 10%;
+            transform: translateX(-50%);
+            background: rgba(30,30,30,0.95);
+            color: #ff9800;
+            font-size: 1.3rem;
+            padding: 18px 36px;
+            border-radius: 10px;
+            box-shadow: 0 0 24px 2px #ff980088;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 10;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            letter-spacing: 0.04em;
+            transition: opacity 0.4s;
+        }
+    </style>
+</head>
+<body>
+    <div class="hands-container">
+        <svg class="sketch-hand left" viewBox="0 0 60 90" fill="none" stroke="#bbb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Palm -->
+            <ellipse cx="30" cy="60" rx="18" ry="22"/>
+            <!-- Thumb -->
+            <path d="M18 65 Q10 60 18 50"/>
+            <!-- Fingers -->
+            <path d="M25 40 Q22 20 30 18 Q38 20 35 40"/>
+            <path d="M30 38 Q28 10 38 12 Q48 14 40 38"/>
+            <path d="M35 42 Q40 18 50 28 Q55 35 38 48"/>
+            <path d="M40 50 Q55 40 50 60"/>
+        </svg>
+        <svg class="sketch-hand right" viewBox="0 0 60 90" fill="none" stroke="#bbb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Palm -->
+            <ellipse cx="30" cy="60" rx="18" ry="22"/>
+            <!-- Thumb -->
+            <path d="M18 65 Q10 60 18 50"/>
+            <!-- Fingers -->
+            <path d="M25 40 Q22 20 30 18 Q38 20 35 40"/>
+            <path d="M30 38 Q28 10 38 12 Q48 14 40 38"/>
+            <path d="M35 42 Q40 18 50 28 Q55 35 38 48"/>
+            <path d="M40 50 Q55 40 50 60"/>
+        </svg>
+    </div>
+    <div class="flashing-fact" id="flashingFact"></div>
+    <script>
+        const facts = [
+            "Fire is a chemical reaction called combustion.",
+            "Blue flames are hotter than red or yellow flames.",
+            "Fire needs heat, fuel, and oxygen to exist.",
+            "The hottest part of a candle flame is just above the blue part.",
+            "Wildfires can move at speeds of up to 14 mph.",
+            "The sun produces energy through nuclear fusion, not combustion.",
+            "Some seeds need fire to open and germinate.",
+            "Backdraft is a dangerous fire phenomenon.",
+            "Lightning is the most common natural cause of wildfires.",
+            "The earliest evidence of controlled fire by humans is 1 million years old."
+        ];
+        const flashingFact = document.getElementById('flashingFact');
+        function showRandomFact() {
+            const fact = facts[Math.floor(Math.random() * facts.length)];
+            flashingFact.textContent = fact;
+            flashingFact.style.opacity = '1';
+            setTimeout(() => {
+                flashingFact.style.opacity = '0';
+            }, 1800);
+        }
+        setInterval(showRandomFact, 2200);
+        // Show one immediately on load
+        showRandomFact();
+
+        // Flashing background color logic
+        let flashColors = [
+            '#ff9800', '#ff3333', '#fff', '#181818', '#ff6600', '#ffb300', '#d84315', '#b71c1c', '#fffde7', '#212121'
+        ];
+        let flashIndex = 0;
+        let flashInterval = null;
+        let flashDelay = 400; // ms, will decrease
+        let flashStartTimeout = setTimeout(() => {
+            flashInterval = setInterval(flashBg, flashDelay);
+        }, 10000); // start after 10 seconds
+        let flashStartTime = Date.now();
+        function flashBg() {
+            document.body.style.background = flashColors[flashIndex % flashColors.length];
+            flashIndex++;
+            // Speed up the flashes
+            if (flashDelay > 60) {
+                flashDelay = Math.max(60, flashDelay - 18);
+                clearInterval(flashInterval);
+                flashInterval = setInterval(flashBg, flashDelay);
+            }
+            // Pop up more facts and hands as it gets faster
+            if (flashDelay < 350) {
+                spawnRandomFact();
+            }
+            if (flashDelay < 250) {
+                spawnRandomHand();
+            }
+            if (flashDelay < 120) {
+                spawnRandomFact();
+                spawnRandomHand();
+            }
+        }
+        // After 15 seconds, redirect
+        setTimeout(() => {
+            clearInterval(flashInterval);
+            window.location.href = 'finale.html';
+        }, 15000);
+
+        // Pop up random fire facts at random positions
+        function spawnRandomFact() {
+            const fact = facts[Math.floor(Math.random() * facts.length)];
+            const el = document.createElement('div');
+            el.className = 'flashing-fact';
+            el.textContent = fact;
+            el.style.left = Math.random() * 80 + 10 + 'vw';
+            el.style.top = Math.random() * 70 + 10 + 'vh';
+            el.style.opacity = '0';
+            el.style.transition = 'opacity 0.3s';
+            el.style.position = 'fixed';
+            el.style.zIndex = 20;
+            document.body.appendChild(el);
+            setTimeout(() => { el.style.opacity = '1'; }, 10);
+            setTimeout(() => { el.style.opacity = '0'; }, 1200);
+            setTimeout(() => { if (el.parentNode) el.parentNode.removeChild(el); }, 1800);
+        }
+        // Pop up random hands at random positions
+        function spawnRandomHand() {
+            const hand = document.createElement('div');
+            hand.innerHTML = `<svg class="sketch-hand" viewBox="0 0 60 90" fill="none" stroke="#bbb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:60px;height:80px;">
+                <ellipse cx="30" cy="60" rx="18" ry="22"/>
+                <path d="M18 65 Q10 60 18 50"/>
+                <path d="M25 40 Q22 20 30 18 Q38 20 35 40"/>
+                <path d="M30 38 Q28 10 38 12 Q48 14 40 38"/>
+                <path d="M35 42 Q40 18 50 28 Q55 35 38 48"/>
+                <path d="M40 50 Q55 40 50 60"/>
+            </svg>`;
+            hand.style.position = 'fixed';
+            hand.style.left = Math.random() * 90 + 'vw';
+            hand.style.top = Math.random() * 80 + 'vh';
+            hand.style.opacity = '0';
+            hand.style.zIndex = 15;
+            hand.style.transition = 'opacity 0.3s';
+            document.body.appendChild(hand);
+            setTimeout(() => { hand.style.opacity = '1'; }, 10);
+            setTimeout(() => { hand.style.opacity = '0'; }, 1200);
+            setTimeout(() => { if (hand.parentNode) hand.parentNode.removeChild(hand); }, 1800);
+        }
+        // Altered mode: if ?altered=1, dramatically change the page
+        function isAltered() {
+            return window.location.search.includes('altered=1');
+        }
+        if (isAltered()) {
+            // Rainbow hands
+            document.querySelectorAll('.sketch-hand').forEach((hand, i) => {
+                hand.style.filter = 'hue-rotate(' + (i*90) + 'deg) brightness(1.5)';
+                hand.style.animation = 'wave 0.4s infinite alternate cubic-bezier(.5,2,.5,1)';
+            });
+            // Spinning facts
+            setInterval(() => {
+                document.querySelectorAll('.flashing-fact').forEach(fact => {
+                    fact.style.transform += ' rotate(' + (Math.random()*60-30) + 'deg)';
+                });
+            }, 400);
+            // Add a weird link to a new page
+            const weird = document.createElement('div');
+            weird.textContent = 'TO THE MIRROR';
+            weird.style.position = 'fixed';
+            weird.style.bottom = '8%';
+            weird.style.right = '8%';
+            weird.style.fontSize = '2.1rem';
+            weird.style.color = '#fff';
+            weird.style.background = 'linear-gradient(90deg,#3333ff,#ff33cc)';
+            weird.style.padding = '18px 40px';
+            weird.style.borderRadius = '18px';
+            weird.style.boxShadow = '0 0 40px #3333ff88';
+            weird.style.cursor = 'pointer';
+            weird.style.zIndex = 200;
+            weird.style.fontWeight = 'bold';
+            weird.style.letterSpacing = '0.1em';
+            weird.style.transition = 'transform 0.2s';
+            weird.onmouseenter = () => { weird.style.transform = 'scale(1.08)'; };
+            weird.onmouseleave = () => { weird.style.transform = 'scale(1)'; };
+            weird.onclick = () => { window.location.href = 'weird-mirror.html?altered=1'; };
+            document.body.appendChild(weird);
+        }
+    </script>
+</body>
+</html> 

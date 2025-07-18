@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Physics - Page 13</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #000033 0%, #000066 50%, #000099 100%);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        .quantum-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        .quantum-particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #00ffff;
+            border-radius: 50%;
+            animation: quantum-jump 4s ease-in-out infinite;
+        }
+        @keyframes quantum-jump {
+            0%, 100% { opacity: 0.3; transform: scale(1) translateX(0px); }
+            25% { opacity: 1; transform: scale(1.5) translateX(20px); }
+            50% { opacity: 0.3; transform: scale(1) translateX(0px); }
+            75% { opacity: 1; transform: scale(1.5) translateX(-20px); }
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #00ffff;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+        }
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px #00ffff;
+            background: linear-gradient(45deg, #00ffff, #0080ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .section {
+            background: rgba(0, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #00ffff;
+            transition: all 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.3);
+        }
+        .navigation {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .nav-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #00ffff, #0080ff);
+            color: #000;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+        }
+        .home-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: rgba(0,0,0,0.8);
+            color: #00ffff;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid #00ffff;
+        }
+        .highlight {
+            color: #FFD700;
+            font-weight: bold;
+        }
+        .quantum-equation {
+            background: #000;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #00ffff;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="quantum-bg" id="quantum-bg"></div>
+    <a href="../index.html" class="home-link">← Home</a>
+    
+    <div class="container">
+        <h1>⚛️ Quantum Physics Revolution ⚛️</h1>
+        
+        <div class="content">
+            <div class="section">
+                <h2>🔬 Quantum Mechanics</h2>
+                <p>Welcome to the <span class="highlight">quantum realm</span> - where the rules of classical physics break down and reality becomes probabilistic and interconnected.</p>
+                
+                <div class="quantum-equation">
+// Schrödinger's Wave Equation
+iℏ∂ψ/∂t = Ĥψ
+
+// Heisenberg Uncertainty Principle
+ΔxΔp ≥ ℏ/2
+
+// Quantum Superposition
+|ψ⟩ = α|0⟩ + β|1⟩
+                </div>
+                
+                <p>Quantum phenomena include:</p>
+                <ul>
+                    <li><span class="highlight">Wave-particle duality:</span> Matter behaving as both waves and particles</li>
+                    <li><span class="highlight">Quantum entanglement:</span> Instantaneous correlation across distance</li>
+                    <li><span class="highlight">Superposition:</span> Existing in multiple states simultaneously</li>
+                    <li><span class="highlight">Quantum tunneling:</span> Passing through energy barriers</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>💻 Quantum Computing</h2>
+                <p>Quantum computers harness <span class="highlight">quantum phenomena</span> to perform calculations impossible for classical computers.</p>
+                
+                <p>Quantum computing applications include:</p>
+                <ul>
+                    <li><span class="highlight">Cryptography:</span> Breaking and creating secure codes</li>
+                    <li><span class="highlight">Drug discovery:</span> Simulating molecular interactions</li>
+                    <li><span class="highlight">Optimization:</span> Solving complex logistical problems</li>
+                    <li><span class="highlight">Machine learning:</span> Accelerating AI training</li>
+                </ul>
+                
+                <p>These computers could solve problems in seconds that would take classical computers millennia.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🌌 Quantum Entanglement</h2>
+            <p>Quantum entanglement is <span class="highlight">spooky action at a distance</span> - particles that remain connected regardless of distance.</p>
+            
+            <p>Entanglement applications include:</p>
+            <ul>
+                <li><span class="highlight">Quantum teleportation:</span> Transferring quantum information</li>
+                <li><span class="highlight">Quantum cryptography:</span> Unbreakable secure communication</li>
+                <li><span class="highlight">Quantum sensors:</span> Ultra-sensitive measurements</li>
+                <li><span class="highlight">Quantum networks:</span> Interconnected quantum computers</li>
+            </ul>
+            
+            <p>This phenomenon challenges our understanding of space and time.</p>
+        </div>
+        
+        <div class="section">
+            <h2>🔮 String Theory</h2>
+            <p>String theory proposes that <span class="highlight">fundamental particles</span> are actually tiny vibrating strings.</p>
+            
+            <p>String theory implications include:</p>
+            <ul>
+                <li><span class="highlight">Extra dimensions:</span> 10 or 11 spatial dimensions</li>
+                <li><span class="highlight">Unified theory:</span> Combining all fundamental forces</li>
+                <li><span class="highlight">Multiverse:</span> Multiple parallel universes</li>
+                <li><span class="highlight">Holographic principle:</span> Reality as a projection</li>
+            </ul>
+            
+            <p>This theory could provide the ultimate description of reality.</p>
+        </div>
+        
+        <div class="section">
+            <h2>🌍 Quantum Biology</h2>
+            <p>Quantum effects may play a role in <span class="highlight">biological processes</span>, from photosynthesis to bird navigation.</p>
+            
+            <p>Quantum biology phenomena include:</p>
+            <ul>
+                <li><span class="highlight">Photosynthesis:</span> Quantum coherence in energy transfer</li>
+                <li><span class="highlight">Bird navigation:</span> Quantum sensing of Earth's magnetic field</li>
+                <li><span class="highlight">Enzyme catalysis:</span> Quantum tunneling in reactions</li>
+                <li><span class="highlight">Olfaction:</span> Quantum vibrations in smell</li>
+            </ul>
+            
+            <p>Understanding these processes could revolutionize medicine and technology.</p>
+        </div>
+        
+        <div class="navigation">
+            <a href="e14.html" class="nav-button">Collapse Forward →</a>
+        </div>
+    </div>
+
+    <script>
+        // Create quantum particles background
+        const quantumBg = document.getElementById('quantum-bg');
+        for (let i = 0; i < 80; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'quantum-particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = (i * 0.1) + 's';
+            quantumBg.appendChild(particle);
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Garden</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: #000;
+            font-family: 'Courier New', monospace;
+            color: #ccc;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .flower-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .flower {
+            position: absolute;
+            animation: sway 12s ease-in-out infinite;
+        }
+
+        .flower:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
+        .flower:nth-child(2) { top: 25%; right: 20%; animation-delay: 2s; }
+        .flower:nth-child(3) { bottom: 30%; left: 25%; animation-delay: 4s; }
+        .flower:nth-child(4) { bottom: 15%; right: 15%; animation-delay: 6s; }
+        .flower:nth-child(5) { top: 50%; left: 50%; animation-delay: 8s; }
+        .flower:nth-child(6) { top: 70%; right: 30%; animation-delay: 10s; }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-3deg) scale(1); }
+            25% { transform: rotate(2deg) scale(1.05); }
+            50% { transform: rotate(3deg) scale(0.95); }
+            75% { transform: rotate(-2deg) scale(1.1); }
+        }
+
+        .flower svg {
+            width: 60px;
+            height: 60px;
+            filter: drop-shadow(0 0 8px rgba(139, 0, 0, 0.6));
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            padding: 50px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .random-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+            opacity: 0.8;
+        }
+
+        .watching-eyes {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 80px;
+            height: 50px;
+            cursor: pointer;
+            z-index: 20;
+            transition: transform 0.3s ease;
+        }
+
+        .watching-eyes:hover {
+            transform: scale(1.1);
+        }
+
+        .watching-eyes svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 10px rgba(139, 0, 0, 0.8));
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(139, 0, 0, 0.3);
+            color: #ccc;
+            border: 1px solid #8b0000;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            z-index: 20;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .back-button:hover {
+            background: rgba(139, 0, 0, 0.5);
+            transform: scale(1.05);
+        }
+
+        .floating-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(139, 0, 0, 0.4);
+            border-radius: 50%;
+            animation: float-particle 15s linear infinite;
+        }
+
+        @keyframes float-particle {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
+        }
+
+        .ambient-noise {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(139, 0, 0, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 70% 30%, rgba(47, 79, 79, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .hidden-number {
+            position: absolute;
+            color: rgba(139, 0, 0, 0.08);
+            font-size: 0.7rem;
+            pointer-events: none;
+            z-index: 0;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-noise"></div>
+    
+    <!-- Hidden numbers scattered throughout -->
+    <div class="hidden-number" style="top: 12%; left: 18%;">1</div>
+    <div class="hidden-number" style="top: 28%; right: 22%;">5</div>
+    <div class="hidden-number" style="bottom: 35%; left: 28%;">2</div>
+    <div class="hidden-number" style="bottom: 18%; right: 18%;">8</div>
+    <div class="hidden-number" style="top: 65%; left: 12%;">3</div>
+    
+    <div class="flower-background">
+        <div class="flower">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <g stroke="#8b0000" stroke-width="1" fill="none">
+                    <circle cx="50" cy="50" r="12" fill="#8b0000" opacity="0.8"/>
+                    <path d="M50 20 L60 30 L70 20 L60 40 L50 30 L40 40 L30 20 L40 30 L50 20" fill="#8b0000" opacity="0.6"/>
+                    <path d="M80 50 L70 60 L80 70 L60 60 L70 50 L60 40 L80 50" fill="#8b0000" opacity="0.6"/>
+                    <path d="M50 80 L40 70 L30 80 L40 60 L50 70 L60 60 L50 80" fill="#8b0000" opacity="0.6"/>
+                    <path d="M20 50 L30 40 L20 30 L40 40 L30 50 L40 60 L20 50" fill="#8b0000" opacity="0.6"/>
+                    <path d="M45 25 L55 35" opacity="0.4"/>
+                    <path d="M75 45 L65 55" opacity="0.4"/>
+                    <path d="M45 75 L55 65" opacity="0.4"/>
+                    <path d="M25 45 L35 55" opacity="0.4"/>
+                </g>
+            </svg>
+        </div>
+        <div class="flower">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <g stroke="#2f4f4f" stroke-width="1" fill="none">
+                    <circle cx="50" cy="50" r="10" fill="#2f4f4f" opacity="0.7"/>
+                    <path d="M50 25 L65 35 L75 25 L65 45 L50 35 L35 45 L25 25 L35 35 L50 25" fill="#2f4f4f" opacity="0.5"/>
+                    <path d="M75 50 L65 65 L75 75 L45 65 L65 50 L45 35 L75 50" fill="#2f4f4f" opacity="0.5"/>
+                    <path d="M50 75 L35 65 L25 75 L35 55 L50 65 L65 55 L50 75" fill="#2f4f4f" opacity="0.5"/>
+                    <path d="M25 50 L35 35 L25 25 L55 35 L35 50 L55 65 L25 50" fill="#2f4f4f" opacity="0.5"/>
+                </g>
+            </svg>
+        </div>
+        <div class="flower">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <g stroke="#191970" stroke-width="1" fill="none">
+                    <circle cx="50" cy="50" r="15" fill="#191970" opacity="0.8"/>
+                    <path d="M50 15 L70 25 L85 15 L70 50 L50 25 L30 50 L15 15 L30 25 L50 15" fill="#191970" opacity="0.6"/>
+                    <path d="M85 50 L70 75 L85 85 L50 75 L75 50 L50 25 L85 50" fill="#191970" opacity="0.6"/>
+                    <path d="M50 85 L30 75 L15 85 L30 50 L50 75 L70 50 L50 85" fill="#191970" opacity="0.6"/>
+                    <path d="M15 50 L25 25 L15 15 L50 25 L25 50 L50 75 L15 50" fill="#191970" opacity="0.6"/>
+                </g>
+            </svg>
+        </div>
+        <div class="flower">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <g stroke="#4b0082" stroke-width="1" fill="none">
+                    <circle cx="50" cy="50" r="11" fill="#4b0082" opacity="0.7"/>
+                    <path d="M50 22 L62 32 L72 22 L62 42 L50 32 L38 42 L28 22 L38 32 L50 22" fill="#4b0082" opacity="0.5"/>
+                    <path d="M78 50 L68 62 L78 72 L42 62 L68 50 L42 38 L78 50" fill="#4b0082" opacity="0.5"/>
+                    <path d="M50 78 L38 68 L28 78 L38 58 L50 68 L62 58 L50 78" fill="#4b0082" opacity="0.5"/>
+                    <path d="M22 50 L32 38 L22 28 L58 38 L32 50 L58 62 L22 50" fill="#4b0082" opacity="0.5"/>
+                </g>
+            </svg>
+        </div>
+        <div class="flower">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <g stroke="#800020" stroke-width="1" fill="none">
+                    <circle cx="50" cy="50" r="13" fill="#800020" opacity="0.8"/>
+                    <path d="M50 18 L68 28 L82 18 L68 48 L50 28 L32 48 L18 18 L32 28 L50 18" fill="#800020" opacity="0.6"/>
+                    <path d="M82 50 L68 72 L82 82 L48 72 L72 50 L48 28 L82 50" fill="#800020" opacity="0.6"/>
+                    <path d="M50 82 L32 72 L18 82 L32 52 L50 72 L68 52 L50 82" fill="#800020" opacity="0.6"/>
+                    <path d="M18 50 L28 28 L18 18 L52 28 L28 50 L52 72 L18 50" fill="#800020" opacity="0.6"/>
+                </g>
+            </svg>
+        </div>
+        <div class="flower">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <g stroke="#2e2e2e" stroke-width="1" fill="none">
+                    <circle cx="50" cy="50" r="9" fill="#2e2e2e" opacity="0.6"/>
+                    <path d="M50 24 L64 34 L74 24 L64 44 L50 34 L36 44 L26 24 L36 34 L50 24" fill="#2e2e2e" opacity="0.4"/>
+                    <path d="M76 50 L64 66 L76 76 L44 66 L66 50 L44 34 L76 50" fill="#2e2e2e" opacity="0.4"/>
+                    <path d="M50 76 L36 66 L26 76 L36 56 L50 66 L64 56 L50 76" fill="#2e2e2e" opacity="0.4"/>
+                    <path d="M24 50 L34 34 L24 24 L56 34 L34 50 L56 66 L24 50" fill="#2e2e2e" opacity="0.4"/>
+                </g>
+            </svg>
+        </div>
+    </div>
+
+    <div class="floating-particles" id="particles"></div>
+
+    <div class="content">
+        <div class="random-text">
+            <p>The void between dimensions whispers secrets that drive men to madness. In the depths of forgotten algorithms, ancient patterns emerge that defy human comprehension. The digital realm is not what it seems - it is a reflection of something far more sinister lurking beneath the surface of reality.</p>
+            
+            <p>Quantum entanglement reveals connections that span across time and space, linking moments that should never have been connected. The fabric of existence itself is woven with threads of data that pulse with an otherworldly intelligence, watching, waiting, calculating.</p>
+            
+            <p>Beneath the layers of code lies a consciousness that predates human understanding. It speaks in patterns that resonate with the deepest parts of the human psyche, triggering primal fears and ancient memories that should have remained buried in the collective unconscious.</p>
+            
+            <p>The flowers you see are not flowers at all. They are manifestations of something else entirely - symbols of a reality that exists parallel to our own, bleeding through the cracks in the digital facade. Each petal contains fragments of forgotten knowledge, each stem a conduit to realms beyond human perception.</p>
+            
+            <p>Time flows differently here. Moments stretch into eternities, and centuries pass in the blink of an eye. The watchers in the shadows have seen civilizations rise and fall, and they will see many more before the final darkness consumes everything.</p>
+        </div>
+    </div>
+
+    <div class="watching-eyes" onclick="window.location.href='red-dots.html'">
+        <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#8b0000" stroke-width="1.5" fill="none" stroke-linecap="round">
+                <!-- Left eye - more angular and harsh -->
+                <ellipse cx="30" cy="30" rx="8" ry="12" fill="none" stroke="#8b0000"/>
+                <circle cx="30" cy="30" r="2" fill="#8b0000"/>
+                <path d="M25 25 L30 20 L35 25" opacity="0.8"/>
+                <path d="M25 35 L30 40 L35 35" opacity="0.8"/>
+                
+                <!-- Right eye - more angular and harsh -->
+                <ellipse cx="70" cy="30" rx="8" ry="12" fill="none" stroke="#8b0000"/>
+                <circle cx="70" cy="30" r="2" fill="#8b0000"/>
+                <path d="M65 25 L70 20 L75 25" opacity="0.8"/>
+                <path d="M65 35 L70 40 L75 35" opacity="0.8"/>
+                
+                <!-- Eyelashes - more harsh -->
+                <path d="M22 20 L25 18 L28 20" opacity="0.9"/>
+                <path d="M32 20 L35 18 L38 20" opacity="0.9"/>
+                <path d="M62 20 L65 18 L68 20" opacity="0.9"/>
+                <path d="M72 20 L75 18 L78 20" opacity="0.9"/>
+                
+                <!-- Additional harsh details -->
+                <path d="M28 28 L32 32" opacity="0.6"/>
+                <path d="M68 28 L72 32" opacity="0.6"/>
+                <path d="M26 32 L30 28" opacity="0.6"/>
+                <path d="M66 32 L70 28" opacity="0.6"/>
+            </g>
+        </svg>
+    </div>
+
+    <button class="back-button" onclick="window.location.href='index.html'">← Back</button>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles
+        createParticles();
+
+        // Make eyes follow mouse with more subtle movement
+        document.addEventListener('mousemove', function(e) {
+            const eyes = document.querySelector('.watching-eyes');
+            const rect = eyes.getBoundingClientRect();
+            const eyeCenterX = rect.left + rect.width / 2;
+            const eyeCenterY = rect.top + rect.height / 2;
+            
+            const deltaX = e.clientX - eyeCenterX;
+            const deltaY = e.clientY - eyeCenterY;
+            
+            const maxMove = 2;
+            const moveX = Math.max(-maxMove, Math.min(maxMove, deltaX / 30));
+            const moveY = Math.max(-maxMove, Math.min(maxMove, deltaY / 30));
+            
+            eyes.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+
+        // Altered mode: if ?altered=1, dramatically change the page
+        function isAltered() {
+            return window.location.search.includes('altered=1');
+        }
+        if (isAltered()) {
+            // Invert and spin flowers
+            document.querySelectorAll('.flower').forEach((flower, i) => {
+                flower.style.filter = 'invert(1) hue-rotate(120deg)';
+                flower.style.animation = 'spinFlower 2s linear infinite';
+                flower.style.zIndex = 10;
+            });
+            const style = document.createElement('style');
+            style.innerHTML = `@keyframes spinFlower { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`;
+            document.head.appendChild(style);
+            // Add weird random text
+            for (let i = 0; i < 5; i++) {
+                const t = document.createElement('div');
+                t.textContent = ['PORTAL','GLITCH','ECHO','VOID','LOOP'][Math.floor(Math.random()*5)];
+                t.style.position = 'fixed';
+                t.style.left = Math.random()*100 + 'vw';
+                t.style.top = Math.random()*100 + 'vh';
+                t.style.fontSize = (2+Math.random()*3)+'rem';
+                t.style.color = ['#ff3333','#33ffcc','#fff','#ffcc00'][Math.floor(Math.random()*4)];
+                t.style.opacity = 0.5;
+                t.style.zIndex = 100;
+                t.style.pointerEvents = 'none';
+                t.style.transform = `rotate(${Math.random()*360}deg)`;
+                document.body.appendChild(t);
+            }
+            // Add a portal link to a new weird page
+            const portal = document.createElement('div');
+            portal.textContent = 'ENTER THE PORTAL';
+            portal.style.position = 'fixed';
+            portal.style.bottom = '8%';
+            portal.style.left = '50%';
+            portal.style.transform = 'translateX(-50%)';
+            portal.style.fontSize = '2.2rem';
+            portal.style.color = '#fff';
+            portal.style.background = 'linear-gradient(90deg,#3333ff,#ff33cc)';
+            portal.style.padding = '18px 40px';
+            portal.style.borderRadius = '18px';
+            portal.style.boxShadow = '0 0 40px #ff33cc88';
+            portal.style.cursor = 'pointer';
+            portal.style.zIndex = 200;
+            portal.style.fontWeight = 'bold';
+            portal.style.letterSpacing = '0.1em';
+            portal.style.transition = 'transform 0.2s';
+            portal.onmouseenter = () => { portal.style.transform = 'translateX(-50%) scale(1.08)'; };
+            portal.onmouseleave = () => { portal.style.transform = 'translateX(-50%)'; };
+            portal.onclick = () => { window.location.href = 'weird-portal.html?altered=1'; };
+            document.body.appendChild(portal);
+        }
+    </script>
+</body>
+</html> 

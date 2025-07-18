@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Facts</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: #181818;
+            color: #e0e0e0;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .facts-container {
+            max-width: 700px;
+            margin: 60px auto 40px auto;
+            background: #232323;
+            border-radius: 10px;
+            box-shadow: 0 0 24px 2px #000a;
+            padding: 40px 30px 30px 30px;
+            border: 2px solid #333;
+        }
+        h1 {
+            text-align: center;
+            color: #fff;
+            font-size: 2.2rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 32px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            text-shadow: 0 2px 8px #000a;
+        }
+        .fact {
+            margin-bottom: 22px;
+            font-size: 1.13rem;
+            line-height: 1.7;
+            padding-left: 10px;
+            border-left: 4px solid #444;
+            background: #191919;
+            color: #e0e0e0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .drag-area {
+            margin: 80px auto 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .draggable-icon {
+            width: 54px;
+            height: 54px;
+            background: #232323;
+            border: 2.5px solid #444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: grab;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 12px #000a;
+            user-select: none;
+            transition: box-shadow 0.2s, border 0.2s;
+        }
+        .draggable-icon.dragging {
+            box-shadow: 0 0 24px 8px #444a;
+            border: 2.5px solid #888;
+        }
+        .drop-target {
+            width: 62px;
+            height: 62px;
+            border: 2.5px dashed #666;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #181818;
+            transition: border 0.2s, background 0.2s;
+        }
+        .drop-target.over {
+            border: 2.5px solid #fff;
+            background: #232323;
+        }
+    </style>
+</head>
+<body>
+    <div class="facts-container">
+        <div class="sketch-man">
+            <svg viewBox="0 0 120 90" width="90" height="70" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 24px auto;">
+                <!-- Head -->
+                <ellipse cx="60" cy="30" rx="18" ry="22" fill="none" stroke="#888" stroke-width="2.2"/>
+                <!-- Face shadow -->
+                <path d="M50 35 Q60 50 70 35" stroke="#444" stroke-width="1.2"/>
+                <!-- Eyes looking down -->
+                <path d="M54 38 Q56 40 58 38" stroke="#666" stroke-width="1.1"/>
+                <path d="M62 38 Q64 40 66 38" stroke="#666" stroke-width="1.1"/>
+                <!-- Nose -->
+                <path d="M60 40 Q61 43 59 45" stroke="#666" stroke-width="1"/>
+                <!-- Mouth (downturned) -->
+                <path d="M57 48 Q60 50 63 48" stroke="#555" stroke-width="1"/>
+                <!-- Hair -->
+                <path d="M42 22 Q60 10 78 22" stroke="#444" stroke-width="2.2"/>
+                <path d="M45 18 Q60 5 75 18" stroke="#333" stroke-width="1.2"/>
+                <!-- Neck -->
+                <path d="M58 52 Q59 60 55 65" stroke="#888" stroke-width="2"/>
+                <path d="M62 52 Q61 60 65 65" stroke="#888" stroke-width="2"/>
+                <!-- Shoulders -->
+                <path d="M55 65 Q40 80 20 85" stroke="#888" stroke-width="2.2"/>
+                <path d="M65 65 Q80 80 100 85" stroke="#888" stroke-width="2.2"/>
+            </svg>
+        </div>
+        <h1>Fire Facts</h1>
+        <div class="fact">1. Fire is a chemical reaction called combustion, which occurs when oxygen reacts with fuel at high temperatures.</div>
+        <div class="fact">2. The flame’s color depends on the material being burned and the temperature. Blue flames are hotter than red or yellow flames.</div>
+        <div class="fact">3. Fire needs three things to exist: heat, fuel, and oxygen. Remove any one, and the fire will go out (the fire triangle).</div>
+        <div class="fact">4. The hottest part of a candle flame is just above the blue part, not the tip.</div>
+        <div class="fact">5. Wildfires can move at speeds of up to 14 miles per hour (23 km/h) or faster in grasslands.</div>
+        <div class="fact">6. The Great Fire of London in 1666 destroyed over 13,000 houses but only six people were recorded to have died.</div>
+        <div class="fact">7. Fire can be created without a flame, such as through friction (rubbing sticks together) or chemical reactions (spontaneous combustion).</div>
+        <div class="fact">8. Some seeds, like those of the giant sequoia, need fire to open and germinate.</div>
+        <div class="fact">9. Firefighters use controlled burns to prevent larger wildfires by removing fuel from the landscape.</div>
+        <div class="fact">10. The sun is not on fire in the traditional sense; it produces energy through nuclear fusion, not combustion.</div>
+        <div class="fact">11. The earliest evidence of controlled fire by humans dates back at least 1 million years.</div>
+        <div class="fact">12. Fire extinguishers work by removing one or more sides of the fire triangle: cooling, smothering, or removing fuel.</div>
+        <div class="fact">13. Backdraft is a dangerous phenomenon where a fire in an enclosed space suddenly explodes when oxygen is reintroduced.</div>
+        <div class="fact">14. Lightning is the most common natural cause of wildfires.</div>
+        <div class="fact">15. The smell of rain on dry earth (petrichor) is partly caused by oils released from plants during fires.</div>
+    </div>
+    <div class="drag-area">
+        <!-- No instructions -->
+        <div class="draggable-icon" id="draggable" draggable="true"></div>
+        <div class="drop-target" id="dropTarget"></div>
+    </div>
+    <script>
+        const draggable = document.getElementById('draggable');
+        const dropTarget = document.getElementById('dropTarget');
+
+        draggable.addEventListener('dragstart', function(e) {
+            draggable.classList.add('dragging');
+            setTimeout(() => draggable.style.visibility = 'hidden', 0);
+        });
+        draggable.addEventListener('dragend', function(e) {
+            draggable.classList.remove('dragging');
+            draggable.style.visibility = 'visible';
+        });
+
+        dropTarget.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            dropTarget.classList.add('over');
+        });
+        dropTarget.addEventListener('dragleave', function(e) {
+            dropTarget.classList.remove('over');
+        });
+        dropTarget.addEventListener('drop', function(e) {
+            dropTarget.classList.remove('over');
+            // Redirect to next page
+            window.location.href = 'next-stage.html';
+        });
+
+        // Altered mode: if ?altered=1, dramatically change the page
+        function isAltered() {
+            return window.location.search.includes('altered=1');
+        }
+        if (isAltered()) {
+            // Grayscale and flicker facts
+            document.body.style.filter = 'grayscale(1) contrast(1.5)';
+            document.querySelectorAll('.fact').forEach((fact, i) => {
+                fact.style.background = '#000';
+                fact.style.color = '#ff3333';
+                fact.style.animation = `flicker${i} 1.2s infinite alternate`;
+                const style = document.createElement('style');
+                style.innerHTML = `@keyframes flicker${i} { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }`;
+                document.head.appendChild(style);
+            });
+            // Add a weird link to a new page
+            const weird = document.createElement('div');
+            weird.textContent = 'UNLOCK THE DOOR';
+            weird.style.position = 'fixed';
+            weird.style.top = '10%';
+            weird.style.right = '8%';
+            weird.style.fontSize = '2rem';
+            weird.style.color = '#fff';
+            weird.style.background = 'linear-gradient(90deg,#000,#ff3333)';
+            weird.style.padding = '16px 32px';
+            weird.style.borderRadius = '12px';
+            weird.style.boxShadow = '0 0 30px #ff333388';
+            weird.style.cursor = 'pointer';
+            weird.style.zIndex = 200;
+            weird.style.fontWeight = 'bold';
+            weird.style.letterSpacing = '0.1em';
+            weird.style.transition = 'transform 0.2s';
+            weird.onmouseenter = () => { weird.style.transform = 'scale(1.08)'; };
+            weird.onmouseleave = () => { weird.style.transform = 'scale(1)'; };
+            weird.onclick = () => { window.location.href = 'weird-door.html?altered=1'; };
+            document.body.appendChild(weird);
+        }
+    </script>
+</body>
+</html> 

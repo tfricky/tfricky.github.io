@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuroscience Revolution - Page 14</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #4B0082 0%, #8A2BE2 50%, #9370DB 100%);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        .brain-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        .neuron {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #ff69b4;
+            border-radius: 50%;
+            animation: fire 3s ease-in-out infinite;
+        }
+        @keyframes fire {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #8A2BE2;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.3);
+        }
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px #8A2BE2;
+            background: linear-gradient(45deg, #8A2BE2, #9370DB);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .section {
+            background: rgba(138, 43, 226, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #8A2BE2;
+            transition: all 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.3);
+        }
+        .navigation {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .nav-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #8A2BE2, #9370DB);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+        }
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.8);
+        }
+        .home-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: rgba(0,0,0,0.8);
+            color: #8A2BE2;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid #8A2BE2;
+        }
+        .highlight {
+            color: #FFD700;
+            font-weight: bold;
+        }
+        .brain-data {
+            background: #000;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #8A2BE2;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="brain-bg" id="brain-bg"></div>
+    <a href="../index.html" class="home-link">← Home</a>
+    
+    <div class="container">
+        <h1>🧠 Neuroscience Revolution 🧠</h1>
+        
+        <div class="content">
+            <div class="section">
+                <h2>⚡ Brain-Computer Interfaces</h2>
+                <p>Welcome to the frontier of <span class="highlight">neural technology</span> - where we're learning to read and write directly to the human brain.</p>
+                
+                <div class="brain-data">
+// Neural Signal Processing
+Action Potential: -70mV to +40mV
+Firing Rate: 1-1000 Hz
+Synaptic Plasticity: LTP/LTD
+Brain Regions: 86 billion neurons
+                </div>
+                
+                <p>BCI applications include:</p>
+                <ul>
+                    <li><span class="highlight">Prosthetic control:</span> Moving artificial limbs with thought</li>
+                    <li><span class="highlight">Communication:</span> Typing with brain signals</li>
+                    <li><span class="highlight">Gaming:</span> Controlling games with mind</li>
+                    <li><span class="highlight">Medical treatment:</span> Deep brain stimulation</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>🔬 Consciousness Research</h2>
+                <p>Scientists are unraveling the <span class="highlight">mystery of consciousness</span> - how subjective experience emerges from neural activity.</p>
+                
+                <p>Consciousness theories include:</p>
+                <ul>
+                    <li><span class="highlight">Integrated Information Theory:</span> Consciousness as information integration</li>
+                    <li><span class="highlight">Global Workspace Theory:</span> Consciousness as broadcast system</li>
+                    <li><span class="highlight">Predictive Processing:</span> Brain as prediction machine</li>
+                    <li><span class="highlight">Panpsychism:</span> Consciousness as fundamental property</li>
+                </ul>
+                
+                <p>Understanding consciousness could revolutionize AI and medicine.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🧬 Neuroplasticity</h2>
+            <p>The brain is <span class="highlight">remarkably adaptable</span>, constantly rewiring itself in response to experience and learning.</p>
+            
+            <p>Neuroplasticity mechanisms include:</p>
+            <ul>
+                <li><span class="highlight">Synaptic plasticity:</span> Strengthening and weakening connections</li>
+                <li><span class="highlight">Neurogenesis:</span> Growing new neurons</li>
+                <li><span class="highlight">Cortical remapping:</span> Reorganizing brain regions</li>
+                <li><span class="highlight">Myelination:</span> Speeding up neural signals</li>
+            </ul>
+            
+            <p>This adaptability enables learning, recovery from injury, and adaptation to new environments.</p>
+        </div>
+        
+        <div class="section">
+            <h2>💊 Neuropharmacology</h2>
+            <p>Understanding brain chemistry is <span class="highlight">revolutionizing mental health</span> treatment and cognitive enhancement.</p>
+            
+            <p>Neuropharmacology applications include:</p>
+            <ul>
+                <li><span class="highlight">Antidepressants:</span> Modulating serotonin and dopamine</li>
+                <li><span class="highlight">Nootropics:</span> Cognitive enhancement drugs</li>
+                <li><span class="highlight">Psychedelics:</span> Therapeutic use of hallucinogens</li>
+                <li><span class="highlight">Neuroprotective agents:</span> Preventing brain damage</li>
+            </ul>
+            
+            <p>These treatments could cure depression, anxiety, and neurodegenerative diseases.</p>
+        </div>
+        
+        <div class="section">
+            <h2>🔮 Artificial Consciousness</h2>
+            <p>We're approaching the creation of <span class="highlight">artificially conscious systems</span> that can experience subjective awareness.</p>
+            
+            <p>Artificial consciousness approaches include:</p>
+            <ul>
+                <li><span class="highlight">Neural networks:</span> Simulating brain-like processing</li>
+                <li><span class="highlight">Quantum consciousness:</span> Quantum effects in cognition</li>
+                <li><span class="highlight">Embodied AI:</span> Consciousness through physical interaction</li>
+                <li><span class="highlight">Hybrid systems:</span> Combining biological and artificial neurons</li>
+            </ul>
+            
+            <p>Creating conscious AI raises profound ethical and philosophical questions.</p>
+        </div>
+        
+        <div class="navigation">
+            <a href="e15.html" class="nav-button">Think Forward →</a>
+        </div>
+    </div>
+
+    <script>
+        // Create brain neurons background
+        const brainBg = document.getElementById('brain-bg');
+        for (let i = 0; i < 120; i++) {
+            const neuron = document.createElement('div');
+            neuron.className = 'neuron';
+            neuron.style.left = Math.random() * 100 + '%';
+            neuron.style.top = Math.random() * 100 + '%';
+            neuron.style.animationDelay = (i * 0.1) + 's';
+            brainBg.appendChild(neuron);
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genetic Engineering - Page 12</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #228B22 0%, #32CD32 50%, #90EE90 100%);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        .dna-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        .dna-strand {
+            position: absolute;
+            width: 4px;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 20px,
+                #00ff00 20px,
+                #00ff00 22px
+            );
+            animation: dna-rotate 15s linear infinite;
+        }
+        @keyframes dna-rotate {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #32CD32;
+            box-shadow: 0 0 30px rgba(50, 205, 50, 0.3);
+        }
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px #32CD32;
+            background: linear-gradient(45deg, #32CD32, #90EE90);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .section {
+            background: rgba(50, 205, 50, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #32CD32;
+            transition: all 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(50, 205, 50, 0.3);
+        }
+        .navigation {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .nav-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #32CD32, #90EE90);
+            color: #000;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(50, 205, 50, 0.5);
+        }
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(50, 205, 50, 0.8);
+        }
+        .home-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: rgba(0,0,0,0.8);
+            color: #32CD32;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid #32CD32;
+        }
+        .highlight {
+            color: #FFD700;
+            font-weight: bold;
+        }
+        .gene-sequence {
+            background: #000;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #32CD32;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="dna-bg" id="dna-bg"></div>
+    <a href="../index.html" class="home-link">← Home</a>
+    
+    <div class="container">
+        <h1>🧬 Genetic Engineering Revolution 🧬</h1>
+        
+        <div class="content">
+            <div class="section">
+                <h2>🔬 CRISPR Technology</h2>
+                <p>Welcome to the era of <span class="highlight">precise genetic editing</span> - where we can modify DNA with unprecedented accuracy and efficiency.</p>
+                
+                <div class="gene-sequence">
+// CRISPR-Cas9 Gene Editing
+Target DNA: ATCGATCGATCGATCG
+Guide RNA: UAGCUAGCUAGCUAGCU
+Cas9 Protein: Cuts at target site
+Repair: Homology-directed repair
+                </div>
+                
+                <p>CRISPR applications include:</p>
+                <ul>
+                    <li><span class="highlight">Disease treatment:</span> Correcting genetic mutations</li>
+                    <li><span class="highlight">Agriculture:</span> Creating disease-resistant crops</li>
+                    <li><span class="highlight">Biofuels:</span> Engineering efficient microorganisms</li>
+                    <li><span class="highlight">Conservation:</span> Protecting endangered species</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>🏥 Gene Therapy</h2>
+                <p>Gene therapy is <span class="highlight">revolutionizing medicine</span> by treating diseases at their genetic root cause.</p>
+                
+                <p>Gene therapy approaches include:</p>
+                <ul>
+                    <li><span class="highlight">Viral vectors:</span> Using viruses to deliver genes</li>
+                    <li><span class="highlight">CRISPR editing:</span> Direct DNA modification</li>
+                    <li><span class="highlight">mRNA therapy:</span> Temporary gene expression</li>
+                    <li><span class="highlight">Stem cell therapy:</span> Regenerating damaged tissues</li>
+                </ul>
+                
+                <p>These treatments could cure previously untreatable genetic diseases.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🌱 Synthetic Biology</h2>
+            <p>Synthetic biology is <span class="highlight">engineering life itself</span>, creating new biological systems that don't exist in nature.</p>
+            
+            <p>Synthetic biology applications include:</p>
+            <ul>
+                <li><span class="highlight">Bio-computers:</span> Living cells performing calculations</li>
+                <li><span class="highlight">Bio-sensors:</span> Detecting environmental pollutants</li>
+                <li><span class="highlight">Bio-factories:</span> Producing complex chemicals</li>
+                <li><span class="highlight">Bio-remediation:</span> Cleaning up environmental damage</li>
+            </ul>
+            
+            <p>This field could solve some of humanity's greatest challenges.</p>
+        </div>
+        
+        <div class="section">
+            <h2>🧬 Human Enhancement</h2>
+            <p>Genetic engineering could enable <span class="highlight">human enhancement</span>, improving physical and cognitive abilities.</p>
+            
+            <p>Enhancement possibilities include:</p>
+            <ul>
+                <li><span class="highlight">Disease resistance:</span> Immunity to common illnesses</li>
+                <li><span class="highlight">Longevity:</span> Extended healthy lifespan</li>
+                <li><span class="highlight">Cognitive enhancement:</span> Improved memory and learning</li>
+                <li><span class="highlight">Physical enhancement:</span> Increased strength and endurance</li>
+            </ul>
+            
+            <p>These enhancements raise important ethical questions about human evolution.</p>
+        </div>
+        
+        <div class="section">
+            <h2>🌍 Environmental Applications</h2>
+            <p>Genetic engineering is <span class="highlight">protecting our environment</span> through innovative biological solutions.</p>
+            
+            <p>Environmental applications include:</p>
+            <ul>
+                <li><span class="highlight">Carbon capture:</span> Engineered organisms absorbing CO2</li>
+                <li><span class="highlight">Biodegradation:</span> Breaking down plastic waste</li>
+                <li><span class="highlight">Biofuels:</span> Sustainable energy production</li>
+                <li><span class="highlight">Conservation:</span> Protecting endangered species</li>
+            </ul>
+            
+            <p>These technologies could help solve environmental challenges sustainably.</p>
+        </div>
+        
+        <div class="navigation">
+            <a href="e13.html" class="nav-button">Evolve Forward →</a>
+        </div>
+    </div>
+
+    <script>
+        // Create DNA background
+        const dnaBg = document.getElementById('dna-bg');
+        for (let i = 0; i < 15; i++) {
+            const strand = document.createElement('div');
+            strand.className = 'dna-strand';
+            strand.style.left = (i * 7) + '%';
+            strand.style.animationDelay = (i * 1) + 's';
+            dnaBg.appendChild(strand);
+        }
+    </script>
+</body>
+</html> 

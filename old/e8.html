@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotics Revolution - Page 8</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #800000 0%, #DC143C 50%, #FF6347 100%);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        .robot-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        .robot-eye {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #00ff00;
+            border-radius: 50%;
+            animation: robot-scan 3s ease-in-out infinite;
+        }
+        @keyframes robot-scan {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #DC143C;
+            box-shadow: 0 0 30px rgba(220, 20, 60, 0.3);
+        }
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px #DC143C;
+            background: linear-gradient(45deg, #DC143C, #FF6347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .section {
+            background: rgba(220, 20, 60, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #DC143C;
+            transition: all 0.3s ease;
+        }
+        .section:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(220, 20, 60, 0.3);
+        }
+        .navigation {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .nav-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #DC143C, #FF6347);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(220, 20, 60, 0.5);
+        }
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(220, 20, 60, 0.8);
+        }
+        .home-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: rgba(0,0,0,0.8);
+            color: #DC143C;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid #DC143C;
+        }
+        .highlight {
+            color: #FFD700;
+            font-weight: bold;
+        }
+        .robot-code {
+            background: #000;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #DC143C;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="robot-grid" id="robot-grid"></div>
+    <a href="../index.html" class="home-link">← Home</a>
+    
+    <div class="container">
+        <h1>🤖 Robotics & Automation Revolution 🤖</h1>
+        
+        <div class="content">
+            <div class="section">
+                <h2>🏭 Industrial Automation</h2>
+                <p>Welcome to the age of <span class="highlight">intelligent automation</span> - where robots work alongside humans, learning and adapting to create unprecedented efficiency and productivity.</p>
+                
+                <div class="robot-code">
+// Collaborative Robot (Cobot) Code
+class Cobot {
+    constructor() {
+        this.sensors = new SensorArray();
+        this.learning = new MachineLearning();
+        this.safety = new SafetyProtocol();
+    }
+    
+    workWithHuman(human) {
+        if (this.safety.checkDistance(human) < 0.5) {
+            this.stop();
+            this.retreat();
+        }
+    }
+}
+                </div>
+                
+                <p>Modern robotics features include:</p>
+                <ul>
+                    <li><span class="highlight">Collaborative robots:</span> Safe human-robot interaction</li>
+                    <li><span class="highlight">Machine learning:</span> Robots that learn from experience</li>
+                    <li><span class="highlight">Computer vision:</span> Advanced perception and recognition</li>
+                    <li><span class="highlight">Soft robotics:</span> Flexible, adaptable robotic systems</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>🏥 Medical Robotics</h2>
+                <p>Robotics is revolutionizing healthcare through <span class="highlight">precision surgery</span> and automated medical procedures that improve outcomes and reduce recovery times.</p>
+                
+                <p>Medical applications include:</p>
+                <ul>
+                    <li><span class="highlight">Surgical robots:</span> Da Vinci systems for minimally invasive surgery</li>
+                    <li><span class="highlight">Rehabilitation robots:</span> Exoskeletons for mobility assistance</li>
+                    <li><span class="highlight">Pharmacy automation:</span> Robotic medication dispensing</li>
+                    <li><span class="highlight">Telemedicine robots:</span> Remote patient monitoring and care</li>
+                </ul>
+                
+                <p>These technologies are making healthcare more accessible and effective worldwide.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🚗 Autonomous Vehicles</h2>
+            <p>The future of transportation is <span class="highlight">fully autonomous</span>, with vehicles that can navigate complex environments without human intervention.</p>
+            
+            <p>Autonomous vehicle technologies include:</p>
+            <ul>
+                <li><span class="highlight">LIDAR systems:</span> 3D mapping of the environment</li>
+                <li><span class="highlight">Computer vision:</span> Real-time object recognition</li>
+                <li><span class="highlight">Machine learning:</span> Predictive driving behavior</li>
+                <li><span class="highlight">V2X communication:</span> Vehicle-to-everything connectivity</li>
+            </ul>
+            
+            <p>These systems could eliminate 90% of traffic accidents and revolutionize urban planning.</p>
+        </div>
+        
+        <div class="section">
+            <h2>🏠 Domestic Robotics</h2>
+            <p>Robots are becoming <span class="highlight">household companions</span>, performing daily tasks and providing assistance to people of all ages.</p>
+            
+            <p>Domestic applications include:</p>
+            <ul>
+                <li><span class="highlight">Cleaning robots:</span> Autonomous vacuum cleaners and mops</li>
+                <li><span class="highlight">Companion robots:</span> Social interaction and emotional support</li>
+                <li><span class="highlight">Kitchen robots:</span> Automated cooking and meal preparation</li>
+                <li><span class="highlight">Security robots:</span> Home monitoring and protection</li>
+            </ul>
+            
+            <p>These robots are making homes safer, cleaner, and more comfortable.</p>
+        </div>
+        
+        <div class="section">
+            <h2>🌊 Underwater & Space Robotics</h2>
+            <p>Robots are exploring <span class="highlight">extreme environments</span> that are inaccessible or dangerous for humans.</p>
+            
+            <p>Exploration applications include:</p>
+            <ul>
+                <li><span class="highlight">Underwater robots:</span> Deep sea exploration and research</li>
+                <li><span class="highlight">Space robots:</span> Mars rovers and satellite maintenance</li>
+                <li><span class="highlight">Disaster robots:</span> Search and rescue in dangerous conditions</li>
+                <li><span class="highlight">Mining robots:</span> Automated resource extraction</li>
+            </ul>
+            
+            <p>These robots are expanding human knowledge and capabilities beyond Earth's boundaries.</p>
+        </div>
+        
+        <div class="navigation">
+            <a href="e9.html" class="nav-button">Automate Forward →</a>
+        </div>
+    </div>
+
+    <script>
+        // Create robot eyes background
+        const robotGrid = document.getElementById('robot-grid');
+        for (let i = 0; i < 50; i++) {
+            const eye = document.createElement('div');
+            eye.className = 'robot-eye';
+            eye.style.left = Math.random() * 100 + '%';
+            eye.style.top = Math.random() * 100 + '%';
+            eye.style.animationDelay = (i * 0.2) + 's';
+            robotGrid.appendChild(eye);
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biotech Revolution - Page 4</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #2d5a27 0%, #4a7c59 50%, #6b8e23 100%);
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 20px;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        .dna-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        .dna-helix {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 20px,
+                #00ff00 20px,
+                #00ff00 22px
+            );
+            animation: dna-rotate 10s linear infinite;
+        }
+        @keyframes dna-rotate {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+        }
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px #00ff00;
+            background: linear-gradient(45deg, #00ff00, #32cd32);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .section {
+            background: rgba(0, 255, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #00ff00;
+            transition: all 0.3s ease;
+        }
+        .section:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 255, 0, 0.3);
+        }
+        .navigation {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .nav-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #00ff00, #32cd32);
+            color: #000;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+        }
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.8);
+        }
+        .home-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: rgba(0,0,0,0.8);
+            color: #00ff00;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid #00ff00;
+        }
+        .highlight {
+            color: #ffd700;
+            font-weight: bold;
+        }
+        .gene-sequence {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #00ff00;
+            margin: 15px 0;
+            font-size: 0.9em;
+            overflow-x: auto;
+        }
+        .breakthrough {
+            background: rgba(255, 215, 0, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #ffd700;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="dna-bg" id="dna-bg"></div>
+    <a href="../index.html" class="home-link">← Home</a>
+    
+    <div class="container">
+        <h1>🧬 The Biotechnology Revolution 🧬</h1>
+        
+        <div class="content">
+            <div class="section">
+                <h2>🔬 CRISPR Gene Editing</h2>
+                <p>Welcome to the era of <span class="highlight">precise genetic manipulation</span>. CRISPR-Cas9 technology has revolutionized our ability to edit DNA with unprecedented accuracy, opening doors to curing genetic diseases and enhancing human capabilities.</p>
+                
+                <div class="gene-sequence">
+ATCGATCGATCGATCGATCGATCGATCGATCG
+TAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCT
+CRISPR Target: ATCGATCGATCGATCG
+Guide RNA: UAGCUAGCUAGCUAGCU
+                </div>
+                
+                <p>This revolutionary technology works like molecular scissors, allowing scientists to:</p>
+                <ul>
+                    <li>Remove disease-causing mutations</li>
+                    <li>Insert beneficial genes</li>
+                    <li>Modify cellular functions</li>
+                    <li>Create disease-resistant crops</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>🧠 Brain-Computer Interfaces</h2>
+                <p>The boundary between human consciousness and artificial intelligence is blurring through <span class="highlight">neural interface technology</span>. Companies like Neuralink are developing brain implants that could revolutionize how we interact with technology.</p>
+                
+                <div class="breakthrough">
+                    <strong>Recent Breakthrough:</strong> Neuralink successfully implanted a device in a human brain, enabling direct communication between thoughts and computers. This could restore mobility to paralyzed individuals and create new forms of human-computer interaction.
+                </div>
+                
+                <p>Future applications include:</p>
+                <ul>
+                    <li>Direct brain-to-brain communication</li>
+                    <li>Enhanced memory and learning</li>
+                    <li>Virtual reality through thought</li>
+                    <li>Treatment of neurological disorders</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🌱 Synthetic Biology</h2>
+            <p>Synthetic biology is the <span class="highlight">engineering of life itself</span>. Scientists are designing and building new biological systems that don't exist in nature, creating organisms that can produce medicines, fuels, and materials.</p>
+            
+            <p>Current projects include:</p>
+            <ul>
+                <li><span class="highlight">Bio-computers:</span> Living cells programmed to perform calculations</li>
+                <li><span class="highlight">Synthetic organs:</span> Lab-grown tissues and organs for transplantation</li>
+                <li><span class="highlight">Bio-factories:</span> Bacteria engineered to produce complex chemicals</li>
+                <li><span class="highlight">Living materials:</span> Self-healing concrete and biodegradable plastics</li>
+            </ul>
+            
+            <p>This field could solve some of humanity's greatest challenges, from climate change to disease eradication.</p>
+        </div>
+        
+        <div class="section">
+            <h2>💊 Personalized Medicine</h2>
+            <p>The future of healthcare is <span class="highlight">personalized and predictive</span>. Advances in genomics, proteomics, and AI are enabling treatments tailored to individual genetic profiles.</p>
+            
+            <p>Revolutionary developments include:</p>
+            <ul>
+                <li><span class="highlight">Cancer immunotherapy:</span> Training the immune system to fight cancer</li>
+                <li><span class="highlight">Gene therapy:</span> Replacing defective genes with healthy ones</li>
+                <li><span class="highlight">Stem cell treatments:</span> Regenerating damaged tissues and organs</li>
+                <li><span class="highlight">Precision medicine:</span> Drugs designed for specific genetic mutations</li>
+            </ul>
+            
+            <p>These advances could extend human lifespan by decades and eliminate many currently incurable diseases.</p>
+        </div>
+        
+        <div class="section">
+            <h2>🌍 Environmental Biotechnology</h2>
+            <p>Biotechnology is also revolutionizing our relationship with the environment. <span class="highlight">Bio-remediation</span> uses living organisms to clean up pollution, while <span class="highlight">bio-energy</span> provides sustainable alternatives to fossil fuels.</p>
+            
+            <p>Environmental applications include:</p>
+            <ul>
+                <li>Bacteria that consume plastic waste</li>
+                <li>Algae that produce biofuels</li>
+                <li>Plants that remove heavy metals from soil</li>
+                <li>Microbes that capture carbon dioxide</li>
+            </ul>
+            
+            <p>These technologies could help reverse climate change and create a sustainable future for humanity.</p>
+        </div>
+        
+        <div class="navigation">
+            <a href="e5.html" class="nav-button">Continue Evolution →</a>
+        </div>
+    </div>
+
+    <script>
+        // Create DNA helix background
+        const dnaBg = document.getElementById('dna-bg');
+        for (let i = 0; i < 20; i++) {
+            const helix = document.createElement('div');
+            helix.className = 'dna-helix';
+            helix.style.left = (i * 5) + '%';
+            helix.style.animationDelay = (i * 0.5) + 's';
+            dnaBg.appendChild(helix);
+        }
+    </script>
+</body>
+</html> 

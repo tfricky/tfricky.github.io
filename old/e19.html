@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Altered Room</title>
+    <style>
+        body {
+            background: #000;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glitch-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(255, 0, 0, 0.1) 2px,
+                rgba(255, 0, 0, 0.1) 4px
+            );
+            animation: glitch 0.3s infinite;
+        }
+        
+        @keyframes glitch {
+            0%, 100% { transform: translateX(0); }
+            10% { transform: translateX(-2px); }
+            20% { transform: translateX(2px); }
+            30% { transform: translateX(-1px); }
+            40% { transform: translateX(1px); }
+        }
+        
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid #ff0000;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+            max-width: 600px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        h1 {
+            color: #ff0000;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px #ff0000;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .content {
+            font-size: 1.2em;
+            color: #ccc;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .truth-arrow {
+            font-size: 4em;
+            color: #ff0000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 20px #ff0000;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .truth-arrow:hover {
+            transform: scale(1.3);
+            text-shadow: 0 0 30px #ff0000;
+        }
+        
+        .truth-text {
+            font-size: 1.5em;
+            color: #ff0000;
+            margin-top: 10px;
+            font-weight: bold;
+            text-shadow: 0 0 10px #ff0000;
+        }
+        
+        .home-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #ff0000;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid #ff0000;
+            z-index: 20;
+        }
+        
+        .static {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter></defs><rect width="100" height="100" filter="url(%23noise)" opacity="0.1"/></svg>');
+            opacity: 0.1;
+            animation: static 0.1s infinite;
+        }
+        
+        @keyframes static {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.2; }
+        }
+    </style>
+</head>
+<body>
+    <div class="glitch-bg"></div>
+    <div class="static"></div>
+    <a href="../index.html" class="home-link">← Home</a>
+    
+    <div class="container">
+        <h1>⚠️ THE ALTERED ROOM ⚠️</h1>
+        <div class="content">
+            <p>You have entered a realm where reality is distorted. The digital and physical worlds merge in ways that challenge perception.</p>
+            
+            <p>Here, nothing is as it seems. The boundaries between truth and illusion blur, and you must choose your path carefully.</p>
+            
+            <p>Are you ready to face the truth?</p>
+        </div>
+        
+        <a href="e20.html" class="truth-arrow" id="truthArrow">
+            ➡️
+        </a>
+        <div class="truth-text">THE TRUTH</div>
+    </div>
+
+    <script>
+        const truthArrow = document.getElementById('truthArrow');
+        
+        // Add glitch effect on hover
+        truthArrow.addEventListener('mouseenter', function() {
+            document.body.style.filter = 'hue-rotate(180deg)';
+        });
+        
+        truthArrow.addEventListener('mouseleave', function() {
+            document.body.style.filter = 'none';
+        });
+        
+        // Add click effect
+        truthArrow.addEventListener('click', function() {
+            this.style.transform = 'scale(1.5) rotate(360deg)';
+            setTimeout(() => {
+                window.location.href = 'e20.html';
+            }, 500);
+        });
+    </script>
+</body>
+</html> 

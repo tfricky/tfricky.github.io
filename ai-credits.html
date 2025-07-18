@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Credits</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .text-container {
+            text-align: center;
+            opacity: 0;
+            animation: fallDown 15s ease-in-out forwards;
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .ai-text {
+            font-size: 2.5rem;
+            color: black;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            line-height: 1.4;
+        }
+
+        @keyframes fallDown {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-200px);
+            }
+            10% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            90% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(calc(100vh - 200px));
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(100vh);
+            }
+        }
+
+        .red-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: red;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1000;
+            animation: flash 0.2s ease-out;
+        }
+
+        @keyframes flash {
+            0% { opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="text-container">
+        <div class="ai-text">this was all made by ai</div>
+    </div>
+
+    <script>
+        let clickCount = 0;
+        const maxClicks = 20;
+
+        function createRedFlash() {
+            const flash = document.createElement('div');
+            flash.className = 'red-flash';
+            document.body.appendChild(flash);
+            
+            // Remove the flash element after animation completes
+            setTimeout(() => {
+                if (flash.parentNode) {
+                    flash.parentNode.removeChild(flash);
+                }
+            }, 200);
+        }
+
+        function handleClick() {
+            clickCount++;
+            createRedFlash();
+            
+            if (clickCount >= maxClicks) {
+                // Clear any localStorage that might affect the altered state
+                try {
+                    localStorage.removeItem('seen-enough');
+                    localStorage.removeItem('weird-portal');
+                    localStorage.removeItem('weird-door');
+                    localStorage.removeItem('weird-mirror');
+                } catch(e) {}
+                
+                // Redirect to the main page (normal beginning)
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Add click event listener to the entire body
+        document.body.addEventListener('click', handleClick);
+    </script>
+</body>
+</html> 

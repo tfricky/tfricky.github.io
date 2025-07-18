@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congratulations Room</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            position: relative;
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .congrats-text {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+        
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .arrow {
+            font-size: 3em;
+            color: #333;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        
+        .arrow.visible {
+            opacity: 1;
+        }
+        
+        .arrow:hover {
+            transform: scale(1.2);
+            transition: transform 0.2s ease;
+        }
+        
+        .home-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid #ddd;
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="home-link">← Home</a>
+    
+    <div class="container">
+        <h1>🎉 Congratulations! 🎉</h1>
+        <p class="congrats-text">
+            You've successfully navigated through all the pages and explored the fascinating world of technology and innovation!
+        </p>
+        
+        <button class="button" id="seenEnoughBtn">I've seen enough</button>
+        
+        <div class="arrow" id="arrow">➡️</div>
+    </div>
+
+    <script>
+        const seenEnoughBtn = document.getElementById('seenEnoughBtn');
+        const arrow = document.getElementById('arrow');
+        
+        // Create sparkles
+        function createSparkles() {
+            const container = document.querySelector('.container');
+            for (let i = 0; i < 20; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(sparkle);
+            }
+        }
+        
+        createSparkles();
+        
+        seenEnoughBtn.addEventListener('click', function() {
+            arrow.classList.add('visible');
+            this.style.display = 'none';
+        });
+        
+        arrow.addEventListener('click', function() {
+            // Add your redirect logic here
+            alert('Arrow clicked! Add your redirect destination here.');
+        });
+    </script>
+</body>
+</html> 

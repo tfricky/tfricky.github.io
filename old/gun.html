@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gun</title>
+    <style>
+        body {
+            background: #000;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        
+        .gun {
+            width: 100px;
+            height: 60px;
+            background: linear-gradient(45deg, #333, #666);
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        
+        .gun:hover {
+            transform: scale(1.1);
+        }
+        
+        .gun::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -20px;
+            width: 20px;
+            height: 8px;
+            background: #333;
+            transform: translateY(-50%);
+            border-radius: 4px;
+        }
+        
+        .gun::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -10px;
+            width: 10px;
+            height: 6px;
+            background: #000;
+            transform: translateY(-50%);
+            border-radius: 3px;
+        }
+        
+        .bullet {
+            width: 8px;
+            height: 8px;
+            background: #FFD700;
+            border-radius: 50%;
+            position: absolute;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        
+        .bullet.fired {
+            pointer-events: auto;
+            cursor: grab;
+        }
+        
+        .bullet.fired:active {
+            cursor: grabbing;
+        }
+        
+        .muzzle-flash {
+            position: absolute;
+            top: 50%;
+            right: -15px;
+            width: 20px;
+            height: 20px;
+            background: #FF4500;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.1s;
+        }
+        
+        .muzzle-flash.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="gun" id="gun">
+        <div class="muzzle-flash" id="muzzleFlash"></div>
+    </div>
+
+    <script>
+        const gun = document.getElementById('gun');
+        const muzzleFlash = document.getElementById('muzzleFlash');
+        let bullets = [];
+        
+        gun.addEventListener('click', fireBullet);
+        
+        function fireBullet() {
+            // Create muzzle flash
+            muzzleFlash.classList.add('active');
+            setTimeout(() => {
+                muzzleFlash.classList.remove('active');
+            }, 100);
+            
+            // Create bullet
+            const bullet = document.createElement('div');
+            bullet.className = 'bullet';
+            document.body.appendChild(bullet);
+            
+            // Position bullet at gun
+            const gunRect = gun.getBoundingClientRect();
+            bullet.style.left = (gunRect.right - 5) + 'px';
+            bullet.style.top = (gunRect.top + gunRect.height/2 - 4) + 'px';
+            
+            // Fire bullet
+            setTimeout(() => {
+                bullet.style.left = (window.innerWidth + 50) + 'px';
+                bullet.style.transition = 'left 0.5s ease-out';
+                
+                // Make bullet draggable after firing
+                setTimeout(() => {
+                    bullet.classList.add('fired');
+                    makeDraggable(bullet);
+                }, 500);
+            }, 50);
+            
+            bullets.push(bullet);
+        }
+        
+        function makeDraggable(element) {
+            let isDragging = false;
+            let currentX;
+            let currentY;
+            let initialX;
+            let initialY;
+            let xOffset = 0;
+            let yOffset = 0;
+            
+            element.addEventListener('mousedown', dragStart);
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('mouseup', dragEnd);
+            
+            function dragStart(e) {
+                initialX = e.clientX - xOffset;
+                initialY = e.clientY - yOffset;
+                
+                if (e.target === element) {
+                    isDragging = true;
+                }
+            }
+            
+            function drag(e) {
+                if (isDragging) {
+                    e.preventDefault();
+                    
+                    currentX = e.clientX - initialX;
+                    currentY = e.clientY - initialY;
+                    
+                    xOffset = currentX;
+                    yOffset = currentY;
+                    
+                    setTranslate(currentX, currentY, element);
+                }
+            }
+            
+            function setTranslate(xPos, yPos, el) {
+                el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+            }
+            
+            function dragEnd(e) {
+                initialX = currentX;
+                initialY = currentY;
+                isDragging = false;
+            }
+        }
+    </script>
+</body>
+</html> 
